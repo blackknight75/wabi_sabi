@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/items', to: 'items#index'
 
   resources :items, only: [:new]
+
+  resources :carts
   # resources :categories, controller: 'categories', param: :slug
 
   get ":slug" => "categories#show", :as => "category"
