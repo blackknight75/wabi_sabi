@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'items#index'
 
-  get '/items', to: 'items#index', as: 'root'
+  get '/items', to: 'items#index'
 
   resources :items, only: [:new]
   # resources :categories, controller: 'categories', param: :slug
