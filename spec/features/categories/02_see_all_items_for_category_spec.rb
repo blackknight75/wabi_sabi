@@ -23,6 +23,7 @@ describe 'visitor visits category show page' do
     item3.item_categories.create(category: category2)
 
     visit category_path(category1)
+    expect(current_path).to eq('/beverage')
 
     expect(page).to have_content("CC Lemon")
     expect(page).to have_content("Macha")
