@@ -16,11 +16,13 @@ end
 
 def setup
   item = Item.create(title: "Macha",
-              description: "Green Tea",
-              price: 100)
+                     description: "Green Tea",
+                     price: 100)
+
   b = Item.create(title: "Chopsticks",
-              description: "Lovely wooden chopsticks.",
-              price: 5)
+                  description: "Lovely wooden chopsticks.",
+                  price: 5)
+                  
   c = Category.create(name: "Kitchen")
   d = Category.create(name: "Beverage")
   item.item_categories.create(category: d)

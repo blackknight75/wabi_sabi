@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   # root '/items', to: 'items#index', as: 'root'
 
   get '/items', to: 'items#index', as: 'root'
+
   resources :items, only: [:new]
-  resources :categories, controller: 'categories', param: :slug
-# resources :writers, as: :users, controller: 'users', param: :slug
+  # resources :categories, controller: 'categories', param: :slug
+
+  get ":slug" => "categories#show", :as => "category"
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
