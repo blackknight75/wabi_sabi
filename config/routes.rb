@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/items', to: 'items#index', as: 'root'
   resources :items, only: [:new]
+  resources :categories, controller: 'categories', param: :slug
+# resources :writers, as: :users, controller: 'users', param: :slug
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
