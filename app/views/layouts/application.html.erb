@@ -10,9 +10,9 @@
   <h1>わびさび Wabi-sabi</h1>
 
   <% flash.each do |type, msg| %>
-    <%= content_tag :div, msg, class: type %>
+    <%= content_tag :div, sanitize(msg), class: type %>
   <% end %>
-  <p> <%= @cart.total_count %></p>
+  <p>Cart: <%= @cart.total_count %></p>
   <%= button_to "View Cart", cart_path(session[:cart]), method: :get %>
 <%= yield %>
 

@@ -1,2 +1,11 @@
 <h1>Your Cart</h1>
-<%= @items %>
+<div class="items">
+<% @items.each do |item| %>
+<div class="item-card">
+<%= item.title %><br>
+<%= item.description %><br>
+<%= item.price %><br>
+<%= button_to "Remove Item", cart_path(item_id: item.id), method: :delete %>
+</div><br><br>
+<% end %>
+</div>
