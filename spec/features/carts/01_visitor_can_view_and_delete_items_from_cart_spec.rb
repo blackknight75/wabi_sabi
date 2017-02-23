@@ -5,10 +5,16 @@ RSpec.feature "visitor visits their cart" do
     item = Item.create(title: "Matcha",
                        description: "Green Tea",
                        price: 100)
+    Item.create(title: "Stuff",
+                       description: "Green Stuff",
+                       price: 100)
     visit root_path
-
-    click_button "Add to Cart"
-    click_button "View Cart:"
+    save_and_open_page
+    within('#items:nth-child(1)') do
+    click_on "Add to Cart"
+    end
+    # click_button "Add to Cart"
+    click_on "View Cart"
 
     expect(current_path).to eq("/cart")
 

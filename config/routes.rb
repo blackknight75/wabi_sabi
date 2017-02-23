@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:new]
 
-  # resources :carts
+  #  resources :carts
 
 
   get ":slug" => "categories#show", :as => "category"

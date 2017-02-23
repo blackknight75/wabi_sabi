@@ -4,7 +4,6 @@ include ActionView::Helpers::TextHelper
 
   def create
     item = Item.find(params[:item_id])
- binding.pry
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
     flash[:notice] = "You have added #{pluralize(@cart.count_of(item.id),
@@ -13,7 +12,8 @@ include ActionView::Helpers::TextHelper
   end
 
   def show
-    @cart
-
+    # session[:cart].each do |c|
+    #   # = Item.find_by(@cart.contents[:id])
+    # @item = Item.find_by(@cart.contents[:id])
   end
 end
