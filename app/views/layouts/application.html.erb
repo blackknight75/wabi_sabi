@@ -9,6 +9,11 @@
 <body>
   <h1>わびさび Wabi-sabi</h1>
 
+  <% flash.each do |type, msg| %>
+    <%= content_tag :div, msg, class: type %>
+  <% end %>
+  <p>Cart: <%= @cart.total_count %></p>
+
 <%= yield %>
 
 </body>
