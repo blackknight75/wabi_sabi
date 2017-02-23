@@ -6,7 +6,7 @@ attr_reader :contents
   end
 
   def total_count
-    @contents.values.sum
+    contents.values.sum
   end
 
   def add_item(item_id)
