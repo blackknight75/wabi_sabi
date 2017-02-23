@@ -12,8 +12,8 @@
   <% flash.each do |type, msg| %>
     <%= content_tag :div, msg, class: type %>
   <% end %>
-  <p>Cart: <%= @cart.total_count %></p>
-
+  <p> <%= @cart.total_count %></p>
+  <%= button_to "View Cart:", cart_path(cart: @cart.contents) %>
 <%= yield %>
 
 </body>
