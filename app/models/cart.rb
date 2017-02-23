@@ -17,4 +17,10 @@ attr_reader :contents
   def count_of(item_id)
     contents[item_id.to_s]
   end
+
+  def self.cart_contents(contents)
+    contents.keys.map do |item_id|
+        Item.find(item_id)
+    end
+  end
 end

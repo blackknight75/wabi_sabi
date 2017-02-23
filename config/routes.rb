@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/cart', to: 'carts#create'
   delete '/cart', to: 'carts#destroy'
 
-  resources :items, only: [:new]
+  resources :items, only: [:new, :show]
 
   get ":slug" => "categories#show", :as => "category"
 end
