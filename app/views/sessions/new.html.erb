@@ -1,5 +1,5 @@
 <h1>Login</h1>
-
+<div class="login-form">
 <%= form_for :session, url: login_path do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -9,4 +9,5 @@
   <%= f.text_field :password_confirmation %>
   <%= f.submit "Login" %>
   <% end %>
-<p>Dont have an account?<%= button_to "Create Account", new_user_path, method: :get %> </p>
+</div>
+<p>Dont have an account?<%= button_to "Create Account", signup_path, method: :get %> </p>

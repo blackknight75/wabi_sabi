@@ -10,10 +10,6 @@ RSpec.feature "visitor visits their cart" do
                        price: 100)
     visit root_path
 
-    # within(first('.item-card')) do
-    #   click_on "Add to Cart"
-    # end
-
     within('.item-card:nth-child(1)') do
       click_on "Add to Cart"
     end
@@ -37,12 +33,15 @@ RSpec.feature "visitor visits their cart" do
     within('.item-card:nth-child(1)') do
       click_on "Remove Item"
     end
-    
-    expect(page).to_not have_content("Matcha")		
-    expect(page).to_not have_content("Green Tea")		
-    expect(page).to have_content("Successfully removed Matcha from your cart.")
-    
-    within('.items') do
+
+    within('.items')do
+      expect(page).to_not have_content("Matcha")
+      expect(page).to_not have_content("Green Tea")
+    end
+
+    expect(page).to have_content("Successfully removes Matcha from cart.")
+
+    within('.item-card') do
       expect(page).to_not have_content("Matcha")
       expect(page).to_not have_content("Green Tea")
     end
