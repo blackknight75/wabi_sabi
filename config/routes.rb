@@ -12,8 +12,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  get '/dashboard', to: 'users#show', as: "user"
+  post '/dashboard', to: 'users#show'
 
   resources :items, only: [:new, :create, :show]
+  resources :users, only: [:create, :show]
 
   get ":slug" => "categories#show", :as => "category"
 end
