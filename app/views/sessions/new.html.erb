@@ -1,5 +1,5 @@
 <h1>Login</h1>
-
+<%= button_to "Create Account", signup_path, method: :get %>
 <%= form_for :sessions, url: user_path do |f| %>
 
   <%= f.label :first_name %>
