@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show', as: "cart"
   post '/cart', to: 'carts#create'
   delete '/cart', to: 'carts#destroy'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
-  resources :items, only: [:new, :show]
+  resources :items, only: [:new, :create, :show]
 
   get ":slug" => "categories#show", :as => "category"
 end
