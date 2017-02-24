@@ -9,16 +9,15 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show', as: "cart"
   post '/cart', to: 'carts#create'
   delete '/cart', to: 'carts#destroy'
-  get '/login', to: 'sessions#new'
+  get '/login', to: 'sessions#new', as: "login"
   post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
-  get '/dashboard', to: 'users#show', as: "user"
-  post '/dashboard', to: 'users#show'
+  post '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+  get '/dashboard', to:'users#show'
+  post '/dashboard', to:'users#show'
 
-  resources :items, only: [:new, :create, :show]
-  resources :users, only: [:create, :show]
+  resources :items, only: [:new, :show]
+  resources :users, only: [:show, :create]
 
   get ":slug" => "categories#show", :as => "category"
 end

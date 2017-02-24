@@ -12,13 +12,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Logged in as #{@user.first_name}"
-      redirect_to user_path
+      flash[:notice] = "You are Logged in as #{@user.first_name}"
+      redirect_to dashboard_path
     else
       render :new
     end
   end
 
+  def show
+    @user = current_user
+  end
 
   private
 
