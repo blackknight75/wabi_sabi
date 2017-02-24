@@ -17,12 +17,17 @@ RSpec.feature "as a visitor" do
   end
 
   scenario "visitor can create an account" do
+
     visit root_path
+
     click_on "Login"
+
     expect(current_path).to eq('/login')
+
     click_on "Create Account"
+
     expect(current_path).to eq('/signup')
-    save_and_open_page
+
     fill_in "user[username]", with: "SJessi"
     fill_in "user[first_name]", with: "Sally"
     fill_in "user[last_name]", with: "Raphael"
@@ -32,6 +37,7 @@ RSpec.feature "as a visitor" do
     fill_in "user[password_confirmation]", with: "pass"
 
     click_on "Save New Account"
+
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Logged in as Sally")
     expect(page).to have_content("Sally@email.com")

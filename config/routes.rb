@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show', as: "user"
   post '/dashboard', to: 'users#show'
   get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
   resources :items, only: [:new, :create, :show]
   resources :users, only: [:create, :show]
