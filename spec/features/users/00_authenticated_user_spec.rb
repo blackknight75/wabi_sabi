@@ -20,7 +20,9 @@ RSpec.feature "as a visitor" do
     click_on "Create Account"
     expect(current_path).to eq('/signup')
 
-    fill_in "login[username]", with: "Sally"
+    fill_in "login[username]", with: "Sally123"
+    fill_in "login[first_name]", with: "Silly"
+    fill_in "login[last_name]", with: "Sally"
     fill_in "login[email]", with: "Sally@email.com"
     fill_in "login[address]", with: "123 2nd St"
     fill_in "login[password]", with: "pass"
