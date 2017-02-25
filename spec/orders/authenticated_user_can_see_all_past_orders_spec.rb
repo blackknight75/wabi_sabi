@@ -14,8 +14,8 @@ describe 'when a user visits the orders page' do
     visit user_orders_path(user)
 
     expect(page).to have_content("Past Orders")
-    expect(page).to have_content("Order #{ORDER_ID} 01/01/2017")
-    expect(page).to have_content("Order #{ORDER_ID} 05/01/2017")
-    expect(page).to_not have_content("Order #{ORDER_ID} 04/01/2017")
+    expect(page).to have_content("Order #{order1.id} 01/01/2017")
+    expect(page).to have_content("Order #{order2.id} 05/01/2017")
+    expect(page).to_not have_content("Order #{order3.id} 04/01/2017")
   end
 end
