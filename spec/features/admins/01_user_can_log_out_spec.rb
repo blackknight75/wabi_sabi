@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "logout" do
-  describe "successful admin logout" do
+  xdescribe "successful admin logout" do
     scenario "admin clicks 'logout' on userpage" do
       admin = User.create(name: "Brandon",
                         username: "B1",
