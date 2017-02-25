@@ -1,1 +1,8 @@
 <h1>Item Show Page</h1>
+<%= @item.title %>
+<%= @item.price %>
+<%= @item.description %>
+<div class="stock">
+  <%= button_to "Add to Cart", cart_path(item_id: @item.id) if @item.retired == false %>
+<%= button_to 'Item Retired', {}, :disabled => @item.retired == true %>
+</div>

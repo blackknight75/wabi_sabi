@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'home page visitation' do
-  describe 'when visiting the home page' do
+  xdescribe 'when visiting the home page' do
     scenario 'a visitor will see login' do
 
       visit root_path
@@ -10,7 +10,7 @@ RSpec.feature 'home page visitation' do
     end
   end
 
-  describe 'when unauthenticated visitor visits log in' do
+  xdescribe 'when unauthenticated visitor visits log in' do
     scenario 'they see sign up' do
 
       visit root_path
