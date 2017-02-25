@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   resources :items, only: [:new, :show]
   resources :users, only: [:show, :create]
-  # resources :admins
 
   get ":slug" => "categories#show", :as => "category"
 end
