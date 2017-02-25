@@ -5,14 +5,17 @@ RSpec.feature "As a user if I visit an item page" do
     scenario "I should still be able to access the item page" do
       item = Item.create(title: "Matcha",
                   description: "Green Tea",
+                  retired: true,
                   price: 100)
-      visit item_path(item)
 
+      visit item_path(item)
       expect(page).to have_content("Matcha")
       expect(page).to have_content("Green Tea")
       expect(page).to have_content(100)
-      expect(page).to_not have_content("Add to Cart")
-      expect(page).to have_content("Item Retired")
+      within('.stock')do
+        expect(page).to_not have_content("Add to Cart")
+        expect(page).to have_content("Item Retired")
+      end
     end
   end
 end
