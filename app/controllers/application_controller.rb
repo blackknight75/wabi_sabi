@@ -13,9 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized_user!
-     if !current_admin?
-       redirect_to dashboard_path#(current_user)
-     else
+     if current_admin?
        redirect_to admin_path
      end
   end
