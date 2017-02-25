@@ -25,11 +25,11 @@ describe "when a visitor visits cart with items" do
 
     expect(current_path).to eq new_user_path
 
-    fill_in "login[username]", with "Sally"
-    fill_in "login[email]", with "Sally@email.com"
-    fill_in "login[address]", with "123 2nd St"
-    fill_in "login[password]", with "pass"
-    fill_in "login[password_confimation]", with "pass"
+    fill_in "login[username]", with: "Sally"
+    fill_in "login[email]", with: "Sally@email.com"
+    fill_in "login[address]", with: "123 2nd St"
+    fill_in "login[password]", with: "pass"
+    fill_in "login[password_confimation]", with: "pass"
 
     click_on "Save New Account"
     visit cart_path
@@ -41,10 +41,10 @@ describe "when a visitor visits cart with items" do
     expect(page).to have_content("Checkout")
   end
 
-  scenario 'when user logs out they see login button'
+  scenario 'when user logs out they see login button' do
     User.create(username: "sally", email: "sally@email.com", password: "pass")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    
+
     visit cart_path
 
     expect(page).to have_content("Logout")
@@ -53,4 +53,5 @@ describe "when a visitor visits cart with items" do
 
     expect(page).to have_content("Login")
     expect(page).to_not have_content("Logout")
+  end
 end
