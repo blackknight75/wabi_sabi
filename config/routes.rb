@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   post '/dashboard', to:'users#show'
 
   resources :items, only: [:new, :show]
-  resources :users, only: [:show, :create]
-
+  resources :users, only: [:show, :create] do
+    resources :orders, only: [:index]
+  end
   get ":slug" => "categories#show", :as => "category"
 end
