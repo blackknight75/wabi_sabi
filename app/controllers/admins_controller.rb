@@ -8,7 +8,6 @@ class AdminsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @admin = User.new(admin_params)
     @admin.update_attributes(role: 0)
     if @admin.save

@@ -32,7 +32,6 @@ RSpec.feature 'logged in regular user cannot view any other page but its own' do
   # visit "/admin"
   #
   # # expect(current_path).to eq("/500")
-  # save_and_open_page
   # expect(page).to have_content("Errors 500 internal_server_error")
 
 
