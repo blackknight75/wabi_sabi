@@ -23,12 +23,4 @@ class ApplicationController < ActionController::Base
       false
     end
   end
-
-  # def redirect_to
-  #   if !current_admin
-  #     redirect_to "/404"
-  #   else
-  #   end
-  # end
-
 end
