@@ -50,7 +50,7 @@ RSpec.feature "as a visitor" do
     expect(page).to have_content("Logged in as Silly")
     expect(page).to have_content("Sally@email.com")
     expect(page).to have_content("123 2nd St")
-    save_and_open_page
+    
     within('.navbar')do
       expect(page).to_not have_content("Login")
       expect(page).to have_content("")
