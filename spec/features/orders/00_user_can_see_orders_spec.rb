@@ -41,12 +41,8 @@ def chopsticks
     price: 5}
 end
 
-  def fish
-    {title: "Fish",
-    description: "slimey fish",
-    price: 5}
-  end
-# Background: An existing user that has multiple orders
-# As an Authenticated User
-# When I visit "/orders"
-# Then I should see all orders belonging to me and no other orders
+def fish
+  {title: "Fish",
+  description: "slimey fish",
+  price: 5}
+end
