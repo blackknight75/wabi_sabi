@@ -14,7 +14,7 @@ RSpec.feature "As a user if I visit an item page" do
       expect(page).to have_content(100)
       within('.stock')do
         expect(page).to_not have_content("Add to Cart")
-        expect(page).to have_content("Item Retired")
+        expect(page).to have_button('Item Retired', disabled: true)
       end
     end
   end
