@@ -48,21 +48,37 @@ require 'rails_helper'
          click_on "Update Quantity"
        end
          expect(page).to have_content("4")
-         expect(page).to have_content("SUBTOTAL")
+         expect(page).to have_content(400)
        expect(current_path).to eq(cart_path)
-       expect(page).to have_content("CART_TOTAL")
+       expect(page).to have_content("405")
      end
 
-     xscenario 'when they decrese the quantity' do
+     scenario 'when they decrese the quantity' do
        setup
-       within('.items:nth-child(1)') do
-         fill_in "cart[quantity]", with: 1
-         click_on "Update Quantity"
-         expect(page).to have_content(1)
-         expect(page).to have_content("SUBTOTAL")
+       visit root_path
+
+       within('.item-card:nth-child(1)') do
+         click_on "Add to Cart"
        end
+       within('.item-card:nth-child(2)') do
+         click_on "Add to Cart"
+       end
+       within('.item-card:nth-child(1)') do
+         click_on "Add to Cart"
+       end
+
+       expect(current_path).to eq root_path
+
+       click_on "View Cart"
+       expect(current_path).to eq cart_path
+       within all('.item-card').first do
+         fill_in "Quantity", with: 1
+         click_on "Update Quantity"
+       end
+         expect(page).to have_content(1)
+         expect(page).to have_content(100)
        expect(current_path).to eq(cart_path)
-       expect(page).to have_content("CART_TOTAL")
+       expect(page).to have_content("105")
      end
  end
 
