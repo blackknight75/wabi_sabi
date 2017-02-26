@@ -32,7 +32,7 @@ describe ' when a user visits their cart' do
     expect(page).to have_content("Matcha")
     expect(page).to have_content("Stuff")
 
-    click_on "Submit"
+    click_on "Submit Order"
 
     expect(current_path).to eq root_path
     expect(page).to have_content("Order was successfully placed")

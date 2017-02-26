@@ -3,3 +3,4 @@
 Item: <%= name %> Quantity: <%= @cart.contents.values[index]  %> Price: <%= @item_prices[index] %>
 <br><br>
 <% end %>
+<%= button_to "Submit Order", orders_path() %>
