@@ -23,4 +23,22 @@ include ActionView::Helpers::TextHelper
     session[:cart] = @cart.contents
     redirect_to cart_path
   end
+
+  def update
+    binding.pry
+    @cart.contents.update(params[:item_id])
+    item = Item.find(params[:item_id])
+    item.update(item_update_params)
+  end
+
+  private
+
+  def item_update_params
+    params.require(:items).permit(:quantity)
+  end
+
+  def item_params
+    params.require(:items).permit(:title, :description, :price)
+  end
+
 end

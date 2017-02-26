@@ -1,11 +1,16 @@
 <h1>Your Cart</h1>
 <div class="items">
-<% @items.each do |item| %>
+  <% @items.each do |item| %>
 <div class="item-card">
-<%= item.title %><br>
-<%= item.description %><br>
-<%= item.price %><br>
-<%= button_to "Remove Item", cart_path(item_id: item.id), method: :delete %>
+  <%= item.title %><br>
+  <%= item.description %><br>
+  <%= item.price %><br>
+  <%= button_to "Remove Item", cart_path(item_id: item.id), method: :delete %>
+  <%= form_tag :cart, url: cart_path, method: :update do |f| %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+    <%= f.submit "Update Quantity" %>
+    <% end %>
 </div><br><br>
 <% end %>
 </div>

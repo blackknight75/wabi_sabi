@@ -5,6 +5,7 @@ RSpec.feature 'home page visitation' do
     scenario 'a visitor will see login' do
 
       visit root_path
+      save_and_open_page
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Wabi Sabi Home Page")
     end
