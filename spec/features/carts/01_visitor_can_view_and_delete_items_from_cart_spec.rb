@@ -10,15 +10,7 @@ RSpec.feature "visitor visits their cart" do
                        price: 100)
     visit root_path
 
-    within('.item-card:nth-child(1)') do
-      click_on "Add to Cart"
-    end
-    within('.item-card:nth-child(2)') do
-      click_on "Add to Cart"
-    end
-    within('.item-card:nth-child(1)') do
-      click_on "Add to Cart"
-    end
+ 
 
     expect(current_path).to eq root_path
 
