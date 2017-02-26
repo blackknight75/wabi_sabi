@@ -14,6 +14,10 @@ attr_reader :contents
     contents[item_id.to_s] += 1
   end
 
+  def update_quantity(item_id, quantity)
+    contents[item_id] = quantity.to_i
+  end
+
   def count_of(item_id)
     contents[item_id.to_s]
   end
