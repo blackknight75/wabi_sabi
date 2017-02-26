@@ -9,9 +9,25 @@ attr_reader :contents
     contents.values.sum
   end
 
+  def subtotal(item)
+    contents[item.id.to_s] * item.price
+  end
+
+  def total(items)
+    total = 0
+    items.each do |p|
+      total += subtotal(p)
+    end
+    total
+  end
+
   def add_item(item_id)
     contents[item_id.to_s] ||= 0
     contents[item_id.to_s] += 1
+  end
+
+  def update_quantity(item_id, quantity)
+    contents[item_id] = quantity.to_i
   end
 
   def count_of(item_id)
