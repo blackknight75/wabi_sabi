@@ -1,0 +1,5 @@
+<h1>Order</h1>
+<% @item_names.each_with_index do |name, index| %>
+Item: <%= name %> Quantity: <%= @cart.contents.values[index]  %> Price: <%= @item_prices[index] %>
+<br><br>
+<% end %>
