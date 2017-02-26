@@ -41,17 +41,58 @@ describe "when a visitor visits cart with items" do
     expect(page).to have_content("Checkout")
   end
 
-  xscenario 'when user logs out they see login button' do
-    user = User.create(username: "sally", email: "sally@email.com", password: "pass")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  xscenario 'when user is logged in' do
+    context "they can click and checkout" do
+      cart_setup
 
-    visit cart_path
+      visit cart_path
 
-    expect(page).to have_content("Logout")
+      click_on
 
-    click_on "Logout"
 
-    expect(page).to have_content("Login")
-    expect(page).to_not have_content("Logout")
+
+    # And when I click "Checkout"
+    # Then the order should be placed
+    # And my current page should be "/orders"
+    # And I should see a message "Order was successfully placed"
+    # And I should see the order I just placed in a table
+    #
+    # visit cart_path
+    #
+    # expect(page).to have_content("Logout")
+    #
+    # click_on "Logout"
+    #
+    # expect(page).to have_content("Login")
+    # expect(page).to_not have_content("Logout")
+  end
+end
+
+def cart_setup
+  user = User.create(username: "sally", email: "sally@email.com", password: "pass")
+  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  item = Item.create(title: "Matcha",
+                     description: "Green Tea",
+                     price: 100)
+  Item.create(title: "Stuff",
+                     description: "Green Stuff",
+                     price: 100)
+
+  visit root_path
+    within all('.item-card').first do
+      click_on "Add to Cart"
+  end
+    within('.item-card:nth-child(2)') do
+      click_on "Add to Cart"
+  end
+    within('.item-card:nth-child(1)') do
+      click_on "Add to Cart"
+  end
+
+  click_on "View Cart"
+
+  expect(current_path).to eq cart_path
+    within('.item-card:nth-child(1)') do
+    end
   end
 end
