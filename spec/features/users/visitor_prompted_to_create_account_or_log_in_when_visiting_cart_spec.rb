@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "when a visitor visits cart with items" do
+xdescribe "when a visitor visits cart with items" do
   xscenario "they must log in or create an account to checkout" do
     Item.create(title: "Matcha",
                         description: "Green Tea",
                         price: 100
                        )
-
+    cart_setup
     visit root_path
 
     within('.item-card:nth-child(1)') do
@@ -41,32 +41,16 @@ describe "when a visitor visits cart with items" do
     expect(page).to have_content("Checkout")
   end
 
-  xscenario 'when user is logged in' do
-    context "they can click and checkout" do
+  scenario 'when user is logged in they can click and checkout' do
+
       cart_setup
 
       visit cart_path
 
-      click_on
-
-
-
-    # And when I click "Checkout"
-    # Then the order should be placed
-    # And my current page should be "/orders"
-    # And I should see a message "Order was successfully placed"
-    # And I should see the order I just placed in a table
-    #
-    # visit cart_path
-    #
-    # expect(page).to have_content("Logout")
-    #
-    # click_on "Logout"
-    #
-    # expect(page).to have_content("Login")
-    # expect(page).to_not have_content("Logout")
+      click_on "Checkout"
+      visit order_items_path
   end
-end
+
 
 def cart_setup
   user = User.create(username: "sally", email: "sally@email.com", password: "pass")

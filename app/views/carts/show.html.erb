@@ -15,5 +15,7 @@ Subtotal: $<%= @cart.subtotal(item) %><br>
 </div><br><br>
 <% end %>
 <p>Cart Total: $<%= @cart.total(@items) %> </p>
-<%= button_to "checkout",{} %>
+<div class="checkout">
+  <%= button_to "checkout", new_order_path, method: :get %>
+</div>
 </div>

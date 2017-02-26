@@ -39,4 +39,16 @@ attr_reader :contents
         Item.find(item_id)
     end
   end
+
+  def cart_items
+    contents.map do |k, v|
+      Item.find(k).title
+    end
+  end
+
+  def cart_item_prices
+    contents.map do |k, v|
+      Item.find(k).price
+    end
+  end
 end
