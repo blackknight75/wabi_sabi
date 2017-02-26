@@ -23,4 +23,12 @@ include ActionView::Helpers::TextHelper
     session[:cart] = @cart.contents
     redirect_to cart_path
   end
+
+  def update
+    @cart.update_quantity(params[:item_id], params[:Quantity])
+    session[:cart] = @cart.contents
+    redirect_to cart_path
+  end
+
+
 end

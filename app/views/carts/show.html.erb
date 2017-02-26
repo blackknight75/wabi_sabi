@@ -5,6 +5,11 @@
 <%= item.title %><br>
 <%= item.description %><br>
 <%= item.price %><br>
+<%= @cart.contents[item.id.to_s] %>
+<%= form_tag cart_path(item_id: item.id), method: :patch do %>
+  <%= number_field_tag "Quantity" %>
+  <%= submit_tag "Update Quantity" %>
+<% end %>
 <%= button_to "Remove Item", cart_path(item_id: item.id), method: :delete %>
 </div><br><br>
 <% end %>
