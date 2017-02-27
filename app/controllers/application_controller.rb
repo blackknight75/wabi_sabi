@@ -15,10 +15,8 @@ class ApplicationController < ActionController::Base
   def admin_authenticate
     if current_user.role == 0
       redirect_to admin_dashboard_path
-    elsif current_user.role == 1
+    else current_user.role == 1
       redirect_to dashboard_path
-    else
-      redirect_to root_path
     end
   end
 
