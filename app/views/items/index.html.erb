@@ -1,5 +1,4 @@
 <h1>Items</h1><br>
-<%#= collection_select(:name, @categories, :slug) %>
 <%= button_to "Categories", categories_path, method: :get %>
 <div class="items">
   <% @items.each do |item| %>
