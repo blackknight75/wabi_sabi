@@ -2,7 +2,7 @@
 An E-commerce website that connects shoppers with the finest Japanese and
 Chinese merchandise!
 
-http://agile-river-90108.herokuapp.com/
+[Wabi-Sabi App](https://wabi-sabi.herokuapp.com/)
 
 * Ruby version (4.2.6)
 
