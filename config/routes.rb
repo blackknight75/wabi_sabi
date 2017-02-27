@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/dashboard', to:'users#show'
   post '/dashboard', to: 'users#show'
   namespace :admin do
-    get '', to: 'dashboard#index', as: 'dashboard'
+    get '/dashboard', to: 'dashboard#index', as: 'dashboard'
   end
   resources :items, only: [:new, :show]
   resources :users, only: [:show, :create]
