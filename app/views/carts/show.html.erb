@@ -2,11 +2,11 @@
 <div class="items">
 <% @items.each do |item| %>
 <div class="item-card">
-<%= item.title %><br>
+<%= link_to item.title, item_path(item) %>
 <%= item.description %><br>
-<%= item.price %><br>
-<p>Quantity:<%= @cart.contents[item.id.to_s] %></p><br>
-<p>Subtotal:<%= @cart.subtotal(item) %></p><br>
+Price:$<%= item.price %><br>
+Quantity:<%= @cart.contents[item.id.to_s] %><br>
+Subtotal: $<%= @cart.subtotal(item) %><br>
 <%= form_tag cart_path(item_id: item.id), method: :patch do %>
   <%= number_field_tag "Quantity" %>
   <%= submit_tag "Update Quantity" %>
@@ -14,5 +14,8 @@
 <%= button_to "Remove Item", cart_path(item_id: item.id), method: :delete %>
 </div><br><br>
 <% end %>
-<p>Cart Total: <%= @cart.total(@items) %> </p>
+<p>Cart Total: $<%= @cart.total(@items) %> </p>
+<div class="checkout">
+  <%= button_to "checkout", new_order_path, method: :get %>
+</div>
 </div>

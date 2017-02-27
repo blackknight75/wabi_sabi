@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "when a visitor visits cart with items" do
+xdescribe "when a visitor visits cart with items" do
   xscenario "they must log in or create an account to checkout" do
     Item.create(title: "Matcha",
                         description: "Green Tea",
                         price: 100
                        )
-
+    cart_setup
     visit root_path
 
     within('.item-card:nth-child(1)') do
@@ -41,17 +41,42 @@ describe "when a visitor visits cart with items" do
     expect(page).to have_content("Checkout")
   end
 
-  xscenario 'when user logs out they see login button' do
-    user = User.create(username: "sally", email: "sally@email.com", password: "pass")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  scenario 'when user is logged in they can click and checkout' do
 
-    visit cart_path
+      cart_setup
 
-    expect(page).to have_content("Logout")
+      visit cart_path
 
-    click_on "Logout"
+      click_on "Checkout"
+      visit order_items_path
+  end
 
-    expect(page).to have_content("Login")
-    expect(page).to_not have_content("Logout")
+
+def cart_setup
+  user = User.create(username: "sally", email: "sally@email.com", password: "pass")
+  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  item = Item.create(title: "Matcha",
+                     description: "Green Tea",
+                     price: 100)
+  Item.create(title: "Stuff",
+                     description: "Green Stuff",
+                     price: 100)
+
+  visit root_path
+    within all('.item-card').first do
+      click_on "Add to Cart"
+  end
+    within('.item-card:nth-child(2)') do
+      click_on "Add to Cart"
+  end
+    within('.item-card:nth-child(1)') do
+      click_on "Add to Cart"
+  end
+
+  click_on "View Cart"
+
+  expect(current_path).to eq cart_path
+    within('.item-card:nth-child(1)') do
+    end
   end
 end

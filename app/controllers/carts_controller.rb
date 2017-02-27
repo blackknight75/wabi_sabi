@@ -18,7 +18,6 @@ include ActionView::Helpers::TextHelper
   def destroy
     @cart.contents.delete(params[:item_id])
     item = Item.find(params[:item_id])
-    # flash[:link_notice] = "Successfully removed <a href="/jobs/list?job=#{item.title}" from your cart."
     flash[:notice] = "Successfully removes #{view_context.link_to("#{item.title}", "/items/#{item.id}")} from cart."
     session[:cart] = @cart.contents
     redirect_to cart_path
@@ -29,6 +28,4 @@ include ActionView::Helpers::TextHelper
     session[:cart] = @cart.contents
     redirect_to cart_path
   end
-
-
 end
