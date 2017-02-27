@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227013245) do
+ActiveRecord::Schema.define(version: 20170227071103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170227013245) do
     t.integer "quantity"
     t.string  "status"
     t.date    "order_date"
+    t.date    "fulfillment_date"
   end
 
   add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
@@ -56,7 +57,10 @@ ActiveRecord::Schema.define(version: 20170227013245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date     "order_date"
+    t.integer  "user_id"
   end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -74,4 +78,5 @@ ActiveRecord::Schema.define(version: 20170227013245) do
   add_foreign_key "item_categories", "items"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "users"
 end

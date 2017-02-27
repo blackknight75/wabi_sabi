@@ -5,8 +5,12 @@ class OrdersController < ApplicationController
     @item_prices = @cart.cart_item_prices
   end
 
+  def index
+    current_user.id
+  end
+
   def create
-    order = Order.new(order_date: Time.now)
+    order = Order.new(user_id: current_user.id, order_date: Time.now)
     if order.save
       @cart.contents.each do |item_id, quantity|
         order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now)
@@ -14,7 +18,7 @@ class OrdersController < ApplicationController
         @cart.contents.clear
         session[:cart] = @cart.contents
         flash[:notice] = "Order was successfully placed #{view_context.link_to("View Order", order_path(order.id))}"
-        redirect_to root_path
+        redirect_to orders_path
     else
       render order_path
     end

@@ -34,7 +34,7 @@ describe ' when a user visits their cart' do
 
     click_on "Submit Order"
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq orders_path
     expect(page).to have_content("Order was successfully placed")
   end
 end
