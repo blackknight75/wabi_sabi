@@ -26,7 +26,7 @@ RSpec.feature "visitor visits their cart" do
     expect(page).to have_content("Green Tea")
 
     within('.item-card:nth-child(1)') do
-      click_on "Remove Item"
+      click_on "Remove"
     end
 
     within('.items')do

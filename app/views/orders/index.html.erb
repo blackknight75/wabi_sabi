@@ -1,6 +1,7 @@
 <h2>My Orders</h2>
 <% @orders.each do |order| %>
-<% order.order_items.each do |order_item| %>
-Subtotal: $  <%= order_item.item.title %>
-Quantity: $  <%= order_item.quantity %>
+  <% order.order_items.each do |order_item| %>
+  Subtotal: $  <%= order_item.item.title %>
+  Quantity: $  <%= order_item.quantity %>
+  <% end %>
 <% end %>
