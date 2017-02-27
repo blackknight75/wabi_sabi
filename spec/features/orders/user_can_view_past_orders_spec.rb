@@ -8,7 +8,7 @@ RSpec.feature "as a user" do
   expect(page).to have_content("My Orders")
   expect(page).to have_link(Order.last.id)
   click_on "#{Order.last.id}"
-
+  save_and_open_page
   expect(page).to have_content("Subtotal")
   expect(page).to have_content("Quantity")
   expect(page).to have_content("Item")
@@ -44,6 +44,6 @@ def cart_setup
 
   click_on "View Cart"
   click_on "checkout"
-  click_on "Submit Order"
+  expect(current_path).to eq orders_path
 
 end

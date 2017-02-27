@@ -28,12 +28,6 @@ describe ' when a user visits their cart' do
     expect(current_path).to eq cart_path
 
     click_on "checkout"
-    expect(current_path).to eq new_order_path
-    expect(page).to have_content("Matcha")
-    expect(page).to have_content("Stuff")
-
-    click_on "Submit Order"
-
     expect(current_path).to eq orders_path
     expect(page).to have_content("Order was successfully placed")
   end
