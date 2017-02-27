@@ -26,7 +26,7 @@ RSpec.feature 'logged in regular user cannot view any other page but its own' do
       expect(page).to have_content("br.mhcexchange@gmail.com")
       expect(page).to_not have_content("br@gmail.com")
 
-      visit '/admin'
+      visit '/admin/dashboard'
       expect(page).to have_content("404")
     end
   end

@@ -21,7 +21,6 @@ RSpec.feature "as a visitor" do
 
     fill_in 'session[username]', with: "billygoat"
     fill_in 'session[password]', with: "pass"
-    fill_in 'session[password_confirmation]', with: "pass"
 
     within('.login-form') do
       click_on "Login"

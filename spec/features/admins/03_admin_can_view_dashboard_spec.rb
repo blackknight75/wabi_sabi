@@ -62,7 +62,7 @@ RSpec.feature "accesses the dashboard" do
     expect(page).to_not have_content 'Manage Users'
     expect(page).to_not have_content 'Manage Items'
 
-    visit'/admin'
+    visit'/admin/dashboard'
     expect(page).to have_content 'Errors 404'
 
   end
