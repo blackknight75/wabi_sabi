@@ -6,19 +6,19 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @all_the_things = Order.joins(:items)
-
-    @orders = Order.where(user_id: current_user.id)
-    #  @orders.each do |order|
-    #    order.order_items.each do |item|
+    @orders = Order.where(user_id: current_user)
 
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def create
-    order = Order.new(user_id: current_user.id)
+    order = Order.new(user_id: current_user.id, order_total: params[:cart_total])
     if order.save
       @cart.contents.each do |item_id, quantity|
-        order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now)
+        order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now.utc.localtime, status: "Pending",)
       end
         @cart.contents.clear
         session[:cart] = @cart.contents

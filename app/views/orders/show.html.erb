@@ -1,0 +1,13 @@
+<h1>Order Show Page</h1>
+
+<h4>Order Date: <%= @order.created_at.strftime("%D at %l:%M%P") %></h4>
+<h4>Order Status: <%= @order.order_items[0].status  %></h4>
+<% @order.item_names.each_with_index do |item_name, index| %>
+  Name: <%= item_name %>
+  Price: <%= @order.item_prices[index] %>
+  Quantity: <%= @order.item_quantities[index] %>
+  Subtotal: <%= @order.subtotal(index) %>
+  <br>
+  <br>
+<% end %>
+<h4>Order Total: <%= @order.order_total %></h4>

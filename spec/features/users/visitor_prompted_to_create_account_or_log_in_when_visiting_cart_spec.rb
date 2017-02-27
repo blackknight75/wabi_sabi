@@ -15,7 +15,8 @@ describe "when a visitor visits cart with items" do
 
     click_on "View Cart"
     within('.checkout') do
-      expect(page).to have_button("Login or Create Account to Checkout")
+      expect(page).to have_button("Login")
+      expect(page).to have_button("Create Account")
     end
     expect(page).to have_content("Matcha")
     expect(page).to have_content("Green Tea")
@@ -23,7 +24,7 @@ describe "when a visitor visits cart with items" do
     expect(page).to_not have_content("Checkout")
 
     within('.checkout') do
-      click_on "Login or Create Account to Checkout"
+      click_on "Create Account"
     end
 
     expect(current_path).to eq signup_path
