@@ -1,0 +1,8 @@
+<h1>Order Show Page</h1>
+<% @order.item_names.each_with_index do |item_name, index| %>
+Name: <%= item_name %> Price: <%= @order.item_prices[index] %> Quantity: <%= @order.item_quantities[index] %> Subtotal: <%= @order.subtotal(index) %>
+<br>
+<br>
+
+Order Total: <%= @order.order_total %>
+<% end %>

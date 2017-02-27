@@ -1,6 +1,6 @@
 <h2>My Orders</h2>
 <% @orders.each do |order| %>
-<% order.order_items.each do |order_item| %>
-Subtotal: $  <%= order_item.item.title %>
-Quantity: $  <%= order_item.quantity %>
+<%= link_to "Order#: #{order.id}", order_path(order) %> Order Date: <%= order.created_at.strftime("%D at %l:%M%P %Z") %>
+<br>
+<br>
 <% end %>
