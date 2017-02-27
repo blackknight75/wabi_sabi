@@ -8,13 +8,13 @@ RSpec.feature "as a user" do
   expect(page).to have_content("My Orders")
   expect(page).to have_link(Order.last.id)
   click_on "#{Order.last.id}"
-
-  expect(page).to have_content("Subtotal")
-  expect(page).to have_content("Quantity")
-  expect(page).to have_content("Item")
-  expect(page).to have_content("Status")
-  expect(page).to have_content("fulfilment date")
-  expect(page).to have_content("Total")
+  expect(page).to have_content("Subtotal: 200")
+  expect(page).to have_content("Quantity: 2")
+  expect(page).to have_content("Price: 100")
+  expect(page).to have_content("Name: Matcha")
+  expect(page).to have_content("Order Status: Pending")
+  expect(page).to have_content("Order Date:")
+  expect(page).to have_content("Order Total: 300")
   end
 end
 
@@ -44,6 +44,6 @@ def cart_setup
 
   click_on "View Cart"
   click_on "checkout"
-  click_on "Submit Order"
+  expect(current_path).to eq orders_path
 
 end
