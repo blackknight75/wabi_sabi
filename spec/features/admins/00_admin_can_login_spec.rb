@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Admin: " do
-  xcontext "not logged in" do
+  context "not logged in" do
     it "can log in" do
       user = User.create(first_name: "Brandon",
                           username: "Brandon1985",
@@ -11,14 +11,14 @@ RSpec.feature "Admin: " do
 
       fill_in "session[username]", with: "Brandon1985"
       fill_in "session[password]", with: "password"
-      click_on "Log In"
+
+      within('.login-form') do
+        click_on "Login"
+      end
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_link("Add a Product")
-
-      within("p") do
-        expect(page).to have_content("Administrator")
-      end
+      expect(page).to_not have_link("Add New Product")
+      expect(current_path).to_not eq(admin_dashboard_path)
     end
   end
 end
