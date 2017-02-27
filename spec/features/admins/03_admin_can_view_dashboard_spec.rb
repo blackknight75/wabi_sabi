@@ -23,8 +23,18 @@ RSpec.feature "accesses the dashboard" do
     within 'h2' do
       expect(page).to have_content 'Admin Dashboard'
     end
-    expect(page).to have_content 'Manage Users'
-    expect(page).to have_content 'Manage Items'
+    within '.new-item' do
+      expect(page).to have_content 'Create New Item'
+    end
+    within '.manage-users' do
+      expect(page).to have_content 'Manage Users'
+    end
+    within '.manage-items' do
+      expect(page).to have_content 'Manage Items'
+    end
+    within '.manage-orders' do
+      expect(page).to have_content 'Manage Orders'
+    end
   end
 
   scenario "user cannot access the admin dashboard" do
@@ -51,6 +61,10 @@ RSpec.feature "accesses the dashboard" do
     end
     expect(page).to_not have_content 'Manage Users'
     expect(page).to_not have_content 'Manage Items'
+
+    visit'/admin'
+    expect(page).to have_content 'Errors 404'
+
   end
 end
 
