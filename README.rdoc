@@ -12,6 +12,6 @@ Wabi-Sabi App: https://wabi-sabi.herokuapp.com/
 * bundle
 
 Authors:
-Dan
+Dan Olson       - devbox4714@gmail.com
+Spencer Carter  - Scmountain@gmail.com
 Brandon Randall - Br.mhcexchange@gmail.com
-Spencer Carter - Scmountain@gmail.com

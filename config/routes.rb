@@ -16,11 +16,12 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/dashboard', to:'users#show'
   post '/dashboard', to: 'users#show'
-  get '/admin', to: 'admins#show'
-
+  namespace :admin do
+    get '', to: 'dashboard#index', as: 'dashboard'
+  end
   resources :items, only: [:new, :show]
   resources :users, only: [:show, :create]
   resources :orders, only: [:new, :create, :show]
-  
+
   get ":slug" => "categories#show", :as => "category"
 end
