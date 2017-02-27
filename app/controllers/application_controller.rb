@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def admin_gate
     if current_user.role != 0
-      redirect_to root_path
+      redirect_to '/404'
     end
   end
 end
