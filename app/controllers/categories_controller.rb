@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by_slug(params[:slug])
+    @category = Category.find_by(params[:slug])
     @items = @category.items unless @category.nil?
   end
 end
