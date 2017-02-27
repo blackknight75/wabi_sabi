@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :authorized_user!, only: [:show]
-
   def new
     @user = User.new
   end
