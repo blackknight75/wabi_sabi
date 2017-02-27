@@ -6,11 +6,12 @@ class OrdersController < ApplicationController
   end
 
   def index
-    current_user.id
+    @orders = Order.where(user_id: current_user.id)
+
   end
 
   def create
-    order = Order.new(user_id: current_user.id, order_date: Time.now)
+    order = Order.new(user_id: current_user.id)
     if order.save
       @cart.contents.each do |item_id, quantity|
         order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now)

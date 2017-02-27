@@ -15,8 +15,6 @@ RSpec.feature "as a user" do
   expect(page).to have_content("Status")
   expect(page).to have_content("fulfilment date")
   expect(page).to have_content("Total")
-  expect(page).to have_content("Date")
-  expect(page).to have_content("Date")
   end
 end
 
