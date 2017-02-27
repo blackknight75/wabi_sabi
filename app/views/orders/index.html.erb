@@ -1,12 +1,6 @@
 <h2>My Orders</h2>
 <% @orders.each do |order| %>
-<% order.order_items.each do |item| %>
-<%= binding.pry %>
-Subtotal: $  <%= subtotal %> #cart-obj
-Quantity: $  <%= quantity %> 
-Subtotal: $  <%= item %> #item-obj
-Subtotal: $  <%= status %>
-Subtotal: $  <%= fulfilment_date %>
-Subtotal: $  <%= total %>
-  <% end %>
+<% order.order_items.each do |order_item| %>
+Subtotal: $  <%= order_item.item.title %>
+Quantity: $  <%= order_item.quantity %>
 <% end %>

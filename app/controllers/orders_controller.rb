@@ -6,7 +6,11 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @all_the_things = Order.joins(:items)
+
     @orders = Order.where(user_id: current_user.id)
+    #  @orders.each do |order|
+    #    order.order_items.each do |item|
 
   end
 
