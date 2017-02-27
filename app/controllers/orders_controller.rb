@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       end
         @cart.contents.clear
         session[:cart] = @cart.contents
-        flash[:notice] = "Order was successfully placed #{view_context.link_to("View Order", "/orders/#{order.id}")}"
+        flash[:notice] = "Order was successfully placed #{view_context.link_to("View Order", order_path(order.id))}"
         redirect_to root_path
     else
       render order_path
