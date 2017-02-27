@@ -18,21 +18,16 @@ RSpec.feature 'logged in regular user cannot view any other page but its own' do
       visit dashboard_path
 
       expect(page).to have_content("My Account")
-      expect(page).to have_content(user.email)
-      visit dashboard_path
-      # visit user_path(user1.id)
-      expect(page).to have_content("My Account")
-      expect(page).to have_content(user.email)
-      expect(current_path).to eq(dashboard_path)
-      # expect(current_path).to eq(user_path(user.id))
+      expect(page).to have_content("br.mhcexchange@gmail.com")
 
+      visit '/users/2'
+
+      expect(page).to have_content("My Account")
+      expect(page).to have_content("br.mhcexchange@gmail.com")
+      expect(page).to_not have_content("br@gmail.com")
+
+      visit '/admin'
+      expect(page).to have_content("404")
     end
   end
-  #
-  # visit "/admin"
-  #
-  # # expect(current_path).to eq("/500")
-  # expect(page).to have_content("Errors 500 internal_server_error")
-
-
 end

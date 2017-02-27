@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   resources :items, only: [:new, :show]
   resources :users, only: [:show, :create]
-  resources :orders, only: [:new, :create, :show]
+  resources :orders, only: [:new, :create, :show, :index]
 
   get ":slug" => "categories#show", :as => "category"
 end
