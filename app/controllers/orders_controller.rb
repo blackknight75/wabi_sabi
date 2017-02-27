@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     order = Order.new(user_id: current_user.id, order_total: params[:cart_total])
     if order.save
       @cart.contents.each do |item_id, quantity|
-        order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now.utc.localtime)
+        order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now.utc.localtime, status: "Pending",)
       end
         @cart.contents.clear
         session[:cart] = @cart.contents

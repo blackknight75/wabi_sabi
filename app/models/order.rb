@@ -2,10 +2,6 @@ class Order < ActiveRecord::Base
 has_many :order_items
 has_many :items, through: :order_items
 
-  def item_extractor(id)
-    @Item.find(id)
-  end
-
   def item_names
      order_items.joins(:item).pluck(:title)
   end
