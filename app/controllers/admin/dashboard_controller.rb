@@ -3,6 +3,7 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @orders = Order.all
+    @ordered_orders = Order.where(status: "Ordered")
   end
 
 

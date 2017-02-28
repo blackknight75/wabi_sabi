@@ -12,7 +12,7 @@ RSpec.feature "as a user" do
   expect(page).to have_content("Quantity: 2")
   expect(page).to have_content("Price: 100")
   expect(page).to have_content("Name: Matcha")
-  expect(page).to have_content("Order Status: Pending")
+  expect(page).to have_content("Order Status: Ordered")
   expect(page).to have_content("Order Date:")
   expect(page).to have_content("Order Total: 300")
   end

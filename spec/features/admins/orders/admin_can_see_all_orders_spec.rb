@@ -31,6 +31,26 @@ RSpec.feature 'admin visual' do
       expect(current_path).to eq(order_path(Order.last))
     end
   end
+  scenario 'admin can see orders by status with counts for each status' do
+    admin = User.create(first_name: "Brandon",
+                      username: "B1",
+                      password: "password",
+                      role: 0)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    inventory_setup
+    order_setup
+    order_setup
+
+    visit admin_dashboard_path
+    Order.first.order_items[0].update_attributes(status: "Paid")
+    # within('.ordered-orders') do
+    #   expect(page).to have_content("Order#: #{Order.last.id}")
+    # end
+    # within('.paid-orders') do
+    #   expect(page).to have_content("Order#: #{Order.first.id}")
+    # end
+  end
 end
 
 def inventory_setup
