@@ -12,10 +12,12 @@ RSpec.feature 'admin visual' do
       inventory_setup
       order_setup
       order_setup
-
       visit admin_dashboard_path
       expect(page).to have_content("Manage Orders")
-      click_on "Order#: #{Order.last.id}"
+
+      within(".my-orders") do
+        click_on "Order#: #{Order.last.id}"
+      end
 
       expect(current_path).to eq(order_path(Order.last))
     end
@@ -55,7 +57,7 @@ def order_setup
     within all('.card-action')[1] do
       click_link "Add to Cart"
   end
-  
+
 within '.nav-wrapper' do
   click_on "Cart"
 end
