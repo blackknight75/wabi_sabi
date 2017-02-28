@@ -1,16 +1,5 @@
 require "rails_helper"
 
-#As an Admin
-#When I visit the dashboard
-#Then I can see a listing of all orders
-#And I can see the total number of orders for each status ("Ordered", "Paid", "Cancelled", "Completed")
-#And I can see a link for each individual order
-#And I can filter orders to display by each status type ("Ordered", "Paid", "Cancelled", "Completed")
-#And I have links to transition between statuses
-#- I can click on "cancel" on individual orders which are "paid" or "ordered"
-#- I can click on "mark as paid" on orders that are "ordered"
-#- I can click on "mark as completed" on orders that are "paid"
-
 RSpec.feature 'admin visual' do
   xdescribe 'when an admin visits the dashboard' do
     it 'they can see a listing of all orders' do
@@ -44,12 +33,6 @@ RSpec.feature 'admin visual' do
 
     visit admin_dashboard_path
     Order.first.order_items[0].update_attributes(status: "Paid")
-    # within('.ordered-orders') do
-    #   expect(page).to have_content("Order#: #{Order.last.id}")
-    # end
-    # within('.paid-orders') do
-    #   expect(page).to have_content("Order#: #{Order.first.id}")
-    # end
   end
 end
 
@@ -65,9 +48,6 @@ end
 def order_setup
   visit root_path
 
-  # first('.card-action').click_link('Add to Cart')
-  # first('.card-action').click_link('Add to Cart')
-  # last('.card-action').click_link('Add to Cart')
     within all('.card-action')[1] do
       click_link "Add to Cart"
   end
@@ -75,9 +55,10 @@ def order_setup
     within all('.card-action')[1] do
       click_link "Add to Cart"
   end
+  
 within '.nav-wrapper' do
   click_on "Cart"
 end
-# save_and_open_page
+
   click_on "checkout"
 end
