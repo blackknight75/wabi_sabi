@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe 'when a visitor adds items to cart' do
   xscenario ' they visit cart and click on login' do
-    user = User.create(username: "sally", email: "sally@email.com", password: "pass")
+    user = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
 
     visit root_path
-    
+
     within('.nav-wrapper') do
       click_on "Cart"
     end
@@ -15,7 +15,7 @@ describe 'when a visitor adds items to cart' do
     fill_in "Password", with: "pass"
 
     expect(current_path).to eq dashboard_path
-    
+
     within('.nav-wrapper') do
       click_on "Cart"
     end

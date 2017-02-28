@@ -7,7 +7,8 @@ RSpec.feature "as a visitor" do
              username: "billygoat",
              password: "pass",
              address: "123 Any St, Denver, CO 80202",
-             email: "billygoat@gmail.com"
+             email: "billygoat@gmail.com",
+             role: 1
             )
 
     visit root_path
