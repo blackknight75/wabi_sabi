@@ -30,8 +30,6 @@ RSpec.feature "visitor visits their cart" do
       click_on "Remove"
     end
 
-    # save_and_open_page
-
     within('.cart-item')do
       expect(page).to_not have_content("Matcha")
       expect(page).to_not have_content("Green Tea")
