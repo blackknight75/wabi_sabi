@@ -12,7 +12,7 @@ RSpec.feature "as a visitor" do
 
     visit root_path
 
-    within('.navbar') do
+    within('.nav-wrapper') do
       click_on "Login"
     end
 
@@ -33,7 +33,9 @@ RSpec.feature "as a visitor" do
 
     visit root_path
 
+  within('.nav-wrapper') do
     click_on "Login"
+  end
 
     expect(current_path).to eq('/login')
 
@@ -57,9 +59,8 @@ RSpec.feature "as a visitor" do
     expect(page).to have_content("Sally@email.com")
     expect(page).to have_content("123 2nd St")
 
-    within('.navbar')do
+    within('.nav-wrapper')do
       expect(page).to_not have_content("Login")
-      expect(page).to have_content("")
     end
   end
 end

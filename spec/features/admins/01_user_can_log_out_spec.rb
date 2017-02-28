@@ -20,7 +20,10 @@ RSpec.feature "logout" do
         click_on "Log Out"
 
       expect(current_path).to eq(root_path)
-      expect(page).to_not have_content("Login")
+
+      within('.nav-wrapper') do
+        expect(page).to_not have_content("Logout")
+      end
     end
   end
 end

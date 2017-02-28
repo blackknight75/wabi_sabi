@@ -1,26 +1,49 @@
 <h1>Your Cart</h1>
-<div class="items">
-<% @items.each do |item| %>
-<div class="item-card">
-<%= link_to item.title, item_path(item) %>
-<%= item.description %><br>
-Price:$<%= item.price %><br>
-Quantity:<%= @cart.contents[item.id.to_s] %><br>
-Subtotal: $<%= @cart.subtotal(item) %><br>
-
-<%= form_tag cart_path(item_id: item.id), method: :patch do %>
-  <%= number_field_tag("Quantity", value = nil, options = {min: 0})  %>
-  <%= submit_tag "Update Quantity" %>
-<% end %>
-<%= button_to "Remove", cart_path(item_id: item.id), method: :delete %>
-</div><br><br>
-<% end %>
-<p>Cart Total: $<%= @cart.total(@items) %> </p>
 <%= button_to "Continue Shopping", root_path, method: :get %>
-<div class="checkout">
+      <table>
+        <thead>
+          <tr>
+              <th data-field="name">Item</th>
+              <th data-field="quantity">Quantity</th>
+              <th data-field="price">Item Price</th>
+              <th data-field="subtotal">Subtotal</th>
+              <th data-field="remove">Remove Item</th>
+              <th data-field="update_quantity">Update Quantity</th>
+          </tr>
+        </thead>
 
-  <%= button_to "checkout", orders_path(cart_total: @cart.total(@items)) if current_user%>
-  <p><%= button_to "Create Account", signup_path, method: :get if !current_user%> or <%= button_to "Login", login_path, method: :get if !current_user%> to checkout!</p>
+        <tbody>
+          <div class="cart-item">
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= link_to item.title, item_path(item) %></td>
+              <td><%= @cart.contents[item.id.to_s] %></td>
+              <td><%= item.price %></td>
+              <td><%= @cart.subtotal(item) %></td>
+              <td><%= button_to "Remove", cart_path(item_id: item.id), method: :delete %></td>
+              <div class="quantity">
+              <td><%= form_tag cart_path(item_id: item.id), method: :patch do %>
+                    <%= number_field_tag("Quantity", value = nil, options = {min: 0, maxlength: 3})  %>
+                    <%= submit_tag "Update Quantity" %>
+                  <% end %>
+              </td>
+            </div>
+            </tr>
+          <% end %>
+        </div>
+        </tbody>
+      </table>
 
-</div>
-</div>
+
+    <div class="row">
+      <div class="col s4 m4 right">
+        <div class="card-panel green lighten-1">
+          <span class="white-text"><h4>Cart Total: $<%= @cart.total(@items) %> </h4></span>
+        </div>
+      </div>
+    </div>
+    <div class='checkout'>
+      <%= button_to "checkout", orders_path(cart_total: @cart.total(@items)), :class => "waves-effect waves-light btn right" if current_user%>
+    </div>
+      <%= button_to "Create Account", signup_path,:class => "waves-effect waves-light btn right", method: :get if !current_user%>
+      <%= button_to "Login", login_path, method: :get, :class => "waves-effect waves-light btn right" if !current_user%>

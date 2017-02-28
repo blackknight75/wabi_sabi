@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  nav {
+    background-color: #53e256;
+}
+footer.page-footer {
+    background-color: #53e256;
+}
+
+body {
+  background-color: #FFFFFF;
+}
+
+nav .brand-logo {
+    color: #fff;
+}
+.green.lighten-1 {
+    background-color: #CCCC99 !important;
+}
+
+.btn, .btn-large {
+    color: #fff;
+    background-color: #CCCC99;
+}

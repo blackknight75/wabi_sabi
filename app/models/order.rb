@@ -17,4 +17,21 @@ has_many :items, through: :order_items
   def subtotal(index)
     (item_prices[index] * item_quantities[index])
   end
+
+  def ordered_orders
+    
+    binding.pry
+  end
+
+  def paid_orders
+
+  end
+
+  def completed_orders
+
+  end
+
+  def cancelled_orders
+
+  end
 end

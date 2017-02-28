@@ -1,3 +1,7 @@
 <h2>My Account</h2>
-Email: <%= @user.email %><br>
-Mailing Address: <%= @user.address %>
+<div class="account-info">
+  Email: <%= @user.email %><br>
+  Mailing Address: <%= @user.address %>
+  <br>
+  <%= link_to "Edit Account", edit_user_path(@user) %>
+</div>
