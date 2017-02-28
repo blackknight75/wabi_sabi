@@ -14,22 +14,25 @@ RSpec.feature "visitor visits their cart" do
 
     expect(current_path).to eq root_path
 
-    within all('.item-card').first do
+    within all('.card-action')[0] do
       click_on "Add to Cart"
     end
 
-      click_on "View Cart"
+    within('.nav-wrapper') do
+      click_on "Cart"
+    end
 
     expect(current_path).to eq("/cart")
 
     expect(page).to have_content("Matcha")
-    expect(page).to have_content("Green Tea")
 
-    within('.item-card:nth-child(1)') do
+    within all('.cart-item')[0] do
       click_on "Remove"
     end
 
-    within('.items')do
+    # save_and_open_page
+
+    within('.cart-item')do
       expect(page).to_not have_content("Matcha")
       expect(page).to_not have_content("Green Tea")
     end

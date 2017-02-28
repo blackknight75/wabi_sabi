@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   def create
     order = Order.new(order_status: "Ordered", user_id: current_user.id, order_total: params[:cart_total])
     if order.save
-      binding.pry
+      # binding.pry
       @cart.contents.each do |item_id, quantity|
         order.order_items.create(item_id: item_id, quantity: quantity, order_date: Time.now.utc.localtime, status: "Ordered",)
       end

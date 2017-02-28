@@ -4,8 +4,11 @@ RSpec.feature "as a user" do
   scenario "I can see my past orders" do
     user_setup
     cart_setup
-    visit orders_path
+    visit cart_path
+    click_on "checkout"
+
   expect(page).to have_content("My Orders")
+  save_and_open_page
   expect(page).to have_link(Order.last.id)
   click_on "#{Order.last.id}"
   expect(page).to have_content("Subtotal: 200")
@@ -32,17 +35,16 @@ def cart_setup
                      price: 100)
 
   visit root_path
-    within all('.item-card').first do
-      click_on "Add to Cart"
-  end
-    within('.item-card:nth-child(2)') do
-      click_on "Add to Cart"
-  end
-    within('.item-card:nth-child(1)') do
-      click_on "Add to Cart"
+
+  within all('.card-action')[0] do
+    click_link "Add to Cart"
   end
 
-  click_on "View Cart"
-  click_on "checkout"
-  expect(current_path).to eq orders_path
+  within all('.card-action')[1] do
+    click_link "Add to Cart"
+  end
+
+  within all('.card-action')[0] do
+    click_link "Add to Cart"
+  end
 end

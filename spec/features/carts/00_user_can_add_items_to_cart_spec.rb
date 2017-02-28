@@ -10,7 +10,10 @@ RSpec.feature 'when a visitor adds item to cart', type: :feature do
 
       visit root_path
 
-      click_button "Add to Cart"
+      within all('.card-action')[0] do
+        click_link "Add to Cart"
+    end
+
 
       expect(page).to have_content("You have added 1 Chopsticks to cart")
     end
@@ -19,11 +22,17 @@ RSpec.feature 'when a visitor adds item to cart', type: :feature do
 
       visit root_path
 
-      click_button "Add to Cart"
+      within all('.card-action')[0] do
+        click_link "Add to Cart"
+    end
+
 
       expect(page).to have_content("You have added 1 Chopsticks to cart")
 
-      click_button "Add to Cart"
+      within all('.card-action')[0] do
+        click_link "Add to Cart"
+    end
+
 
       expect(page).to have_content("You have added 2 Chopsticks to cart")
 
@@ -34,7 +43,10 @@ RSpec.feature 'when a visitor adds item to cart', type: :feature do
 
       expect(page).to have_content("Cart: 0")
 
-      click_button "Add to Cart"
+      within all('.card-action')[0] do
+        click_link "Add to Cart"
+    end
+
 
       expect(page).to have_content("Cart: 1")
     end

@@ -12,7 +12,7 @@ require "rails_helper"
 #- I can click on "mark as completed" on orders that are "paid"
 
 RSpec.feature 'admin visual' do
-  describe 'when an admin visits the dashboard' do
+  xdescribe 'when an admin visits the dashboard' do
     it 'they can see a listing of all orders' do
       admin = User.create(first_name: "Brandon",
                         username: "B1",
@@ -64,16 +64,20 @@ end
 
 def order_setup
   visit root_path
-    within all('.item-card').first do
-      click_on "Add to Cart"
-  end
-    within('.item-card:nth-child(2)') do
-      click_on "Add to Cart"
-  end
-    within('.item-card:nth-child(1)') do
-      click_on "Add to Cart"
+
+  # first('.card-action').click_link('Add to Cart')
+  # first('.card-action').click_link('Add to Cart')
+  # last('.card-action').click_link('Add to Cart')
+    within all('.card-action')[1] do
+      click_link "Add to Cart"
   end
 
-  click_on "View Cart"
+    within all('.card-action')[1] do
+      click_link "Add to Cart"
+  end
+within '.nav-wrapper' do
+  click_on "Cart"
+end
+# save_and_open_page
   click_on "checkout"
 end

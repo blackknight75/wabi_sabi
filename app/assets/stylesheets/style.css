@@ -9,12 +9,24 @@ body {
   }
 
   nav {
-    background-color: #698C2D;
+    background-color: #53e256;
 }
 footer.page-footer {
-    background-color: #698C2C;
+    background-color: #53e256;
 }
 
 body {
-  background-color: #f0edcd;
+  background-color: #FFFFFF;
+}
+
+nav .brand-logo {
+    color: #fff;
+}
+.green.lighten-1 {
+    background-color: #CCCC99 !important;
+}
+
+.btn, .btn-large {
+    color: #fff;
+    background-color: #CCCC99;
 }
