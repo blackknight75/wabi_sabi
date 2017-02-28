@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe 'when a user visits the orders page' do
   xscenario 'they see al past orders' do
-    user = User.create(username: "sally", email: "sally@email.com", password: "pass")
+    user = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    user2 = User.create(username: "sally", email: "sally@email.com", password: "pass")
+    user2 = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
 
     order1 = user.orders.create(order_date: 01/01/2017)
     order2 = user.orders.create(order_date: 05/01/2017)

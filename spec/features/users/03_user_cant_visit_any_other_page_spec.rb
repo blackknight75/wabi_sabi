@@ -5,11 +5,13 @@ RSpec.feature 'logged in regular user cannot view any other page but its own' do
     it 'a user cant see another user info' do
       user = User.create(username: "BB King",
                         email: "br.mhcexchange@gmail.com",
-                        password: "b"
+                        password: "b",
+                        role: 1
                         )
       user1 = User.create(username: "user 1",
                           email: "br@gmail.com",
-                          password: "x"
+                          password: "x",
+                          role: 1
                           )
       allow_any_instance_of(ApplicationController)
                             .to receive(:current_user)
