@@ -13,17 +13,19 @@ describe ' when a user visits their cart' do
                        price: 100)
 
     visit root_path
-      within all('.item-card').first do
-        click_on "Add to Cart"
-    end
-      within('.item-card:nth-child(2)') do
-        click_on "Add to Cart"
-    end
-      within('.item-card:nth-child(1)') do
-        click_on "Add to Cart"
-    end
+    within all('.card-action')[0] do
+      click_link "Add to Cart"
+  end
+    within all('.card-action')[1] do
+      click_link "Add to Cart"
+  end
+    within all('.card-action')[0] do
+      click_link "Add to Cart"
+  end
 
-    click_on "View Cart"
+    within('.nav-wrapper') do
+      click_on "Cart"
+    end
 
     expect(current_path).to eq cart_path
 

@@ -9,23 +9,22 @@ describe "when a visitor visits cart with items" do
     cart_setup
     visit root_path
 
-    within('.item-card:nth-child(1)') do
+    within all('.card-action')[0] do
       click_on "Add to Cart"
     end
 
-    click_on "View Cart"
-    within('.checkout') do
+    within('.nav-wrapper') do
+      click_on "Cart"
+    end
+
       expect(page).to have_button("Login")
       expect(page).to have_button("Create Account")
-    end
+
     expect(page).to have_content("Matcha")
-    expect(page).to have_content("Green Tea")
     expect(page).to have_content("100")
     expect(page).to_not have_content("Checkout")
 
-    within('.checkout') do
-      click_on "Create Account"
-    end
+    click_on "Create Account"
 
     expect(current_path).to eq signup_path
     fill_in "user[username]", with: "Sally"
@@ -38,7 +37,6 @@ describe "when a visitor visits cart with items" do
     visit cart_path
     expect(page).to_not have_content("Login or Create Account to Checkout")
     expect(page).to have_content("Matcha")
-    expect(page).to have_content("Green Tea")
     expect(page).to have_content("100")
     expect(page).to have_button("checkout")
   end
@@ -52,6 +50,7 @@ describe "when a visitor visits cart with items" do
 
     expect(page).to have_button("checkout")
   end
+end
 
 def user_setup
   user = User.create(username: "sally", email: "sally@email.com", password: "pass")
@@ -67,20 +66,19 @@ def cart_setup
                      price: 100)
 
   visit root_path
-    within all('.item-card').first do
-      click_on "Add to Cart"
+  within all('.card-action')[0] do
+    click_link "Add to Cart"
+end
+within all('.card-action')[1] do
+  click_link "Add to Cart"
+end
+  within all('.card-action')[0] do
+    click_link "Add to Cart"
+end
+  within('.nav-wrapper') do
+    click_on "Cart"
   end
-    within('.item-card:nth-child(2)') do
-      click_on "Add to Cart"
-  end
-    within('.item-card:nth-child(1)') do
-      click_on "Add to Cart"
-  end
-
-  click_on "View Cart"
 
   expect(current_path).to eq cart_path
-    within('.item-card:nth-child(1)') do
-    end
-  end
+
 end

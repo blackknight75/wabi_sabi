@@ -1,12 +1,23 @@
 <h1>Items</h1><br>
 <%= button_to "Categories", categories_path, method: :get %>
 <div class="items">
+  <div class="row">
   <% @items.each do |item| %>
-  <div class="item-card">
-    <%= item.title %>
-    <%= item.price %>
-    <%= item.description %>
-    <%= button_to "Add to Cart", cart_path(item_id: item.id) %>
+    <div class="col s4 m4">
+      <div class="card small">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+        </div>
+        <div class="card-content">
+          <p><%= item.title %></p>
+          <p>Price: <%= item.price %></p>
+          <p>Description: <%= item.description %></p>
+          </div>
+          <div class="card-action">
+            <%= link_to "Add to Cart", cart_path(item_id: item.id), method: :post %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% end %>
 </div>

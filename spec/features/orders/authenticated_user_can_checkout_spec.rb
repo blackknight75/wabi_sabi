@@ -5,16 +5,20 @@ describe 'when a visitor adds items to cart' do
     user = User.create(username: "sally", email: "sally@email.com", password: "pass")
 
     visit root_path
-
-    click_on "View Cart"
+    
+    within('.nav-wrapper') do
+      click_on "Cart"
+    end
     click_on "Login"
 
     fill_in "Username", with: "sally"
     fill_in "Password", with: "pass"
 
     expect(current_path).to eq dashboard_path
-
-    click_on "View Cart"
+    
+    within('.nav-wrapper') do
+      click_on "Cart"
+    end
     click_on "Checkout"
 
     expect(current_path).to eq user_orders_path(user)

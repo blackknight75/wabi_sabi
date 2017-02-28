@@ -1,6 +1,6 @@
 <h1>create user</h1>
 
-  <%= form_for @user do |f| %>
+<%= form_for @user do |f| %>
   <%= f.label :username %><br>
   <%= f.text_field :username %><br>
   <%= f.label :password %><br>
@@ -16,5 +16,4 @@
   <%= f.label :address %><br>
   <%= f.text_field :address %><br>
   <%= f.submit "Save New Account" %>
-
 <% end %>
