@@ -8,7 +8,6 @@ RSpec.feature "as a user" do
     click_on "checkout"
 
   expect(page).to have_content("My Orders")
-  save_and_open_page
   expect(page).to have_link(Order.last.id)
   click_on "#{Order.last.id}"
   expect(page).to have_content("Subtotal: 200")
