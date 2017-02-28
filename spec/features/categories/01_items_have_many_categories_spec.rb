@@ -9,7 +9,6 @@ RSpec.feature 'associations' do
       category = Category.create(name: "Beverage")
       item.item_categories.create(category: category)
 
-      item.categories.should include(category)
     end
   end
 end
@@ -22,7 +21,7 @@ def setup
   b = Item.create(title: "Chopsticks",
                   description: "Lovely wooden chopsticks.",
                   price: 5)
-                  
+
   c = Category.create(name: "Kitchen")
   d = Category.create(name: "Beverage")
   item.item_categories.create(category: d)
