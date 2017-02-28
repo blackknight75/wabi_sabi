@@ -45,5 +45,4 @@ def cart_setup
   click_on "View Cart"
   click_on "checkout"
   expect(current_path).to eq orders_path
-
 end
