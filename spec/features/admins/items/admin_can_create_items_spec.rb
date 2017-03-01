@@ -18,6 +18,7 @@ describe 'When an admin visits item new page' do
     click_on 'Add Item to Inventory'
 
     expect(current_path).to eq admin_items_path
+    save_and_open_page
     expect(page).to have_content("Chopsticks")
     expect(page).to have_content("Wooden sticks.")
     expect(page).to have_content("5")

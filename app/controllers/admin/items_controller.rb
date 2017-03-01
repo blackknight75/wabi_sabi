@@ -11,6 +11,7 @@ class Admin::ItemsController < ApplicationController
       params[:item][:category_ids].each do |category_id|
         item.item_categories.create(category_id: category_id)
       end
+      flash[:errors] = "Missing fields. Please try again."
       redirect_to admin_items_path
     else
       render :new

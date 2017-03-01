@@ -1,6 +1,8 @@
 <h2>Admin Dashboard</h2>
 
-<div class='new-item'>
+<div class='item-management'>
+  <h4>Manage Items</h4>
+  <%= link_to 'View All Items', admin_items_path, class: "waves-effect waves-light light-blue darken-4 btn-large" %>
   <%= link_to "Add New Item to Inventory", new_admin_item_path, class: "waves-effect waves-light light-blue darken-4 btn-large"%>
 </div>
 

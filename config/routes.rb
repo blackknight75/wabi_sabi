@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  get      '/items', to: 'items#index'
   get       '/cart', to: 'carts#show', as: "cart"
   post      '/cart', to: 'carts#create'
   delete    '/cart', to: 'carts#destroy'
@@ -16,12 +15,13 @@ Rails.application.routes.draw do
   get     '/signup', to: 'users#new'
   get  '/dashboard', to: 'users#show'
   post '/dashboard', to: 'users#show'
+
   namespace :admin do
     get  '/dashboard', to: 'dashboard#index', as: 'dashboard'
     post '/dashboard', to: 'dashboard#index'
     resources :items
   end
-  resources :items, only: [:new, :show]
+  resources :items, only: [:new, :show, :index]
   resources :users, except: [:delete]
   resources :orders, only: [:new, :create, :show, :index]
   resources :categories, only: [:index]
