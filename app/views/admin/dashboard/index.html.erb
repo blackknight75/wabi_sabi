@@ -1,14 +1,16 @@
 <h2>Admin Dashboard</h2>
 
-<div class='new-item'>
-  <h4>Create New Item</h4>
+<div class='item-management'>
+  <h4>Manage Items</h4>
+  <%= link_to 'View All Items', admin_items_path, class: "waves-effect waves-light light-blue darken-4 btn-large" %>
+  <%= link_to "Add New Item to Inventory", new_admin_item_path, class: "waves-effect waves-light light-blue darken-4 btn-large"%>
 </div>
 
 <div class='manage-orders'>
 <h3>Manage Orders</h3>
 
 
-<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Sort by Status</a>
+<a class='dropdown-button waves-effect waves-light light-blue darken-4 btn' href='#' data-activates='dropdown1'><i class="material-icons left">toc</i>Sort by Status</a>
 
 <ul id='dropdown1' class='dropdown-content'>
   <li><%= link_to "Ordered", admin_dashboard_path(order_status: "Ordered"), method: :post %></li>

@@ -17,7 +17,6 @@ RSpec.feature "logout" do
         click_on "Login"
       end
 
-
       expect(current_path).to eq dashboard_path
 
       within('.nav-wrapper') do
