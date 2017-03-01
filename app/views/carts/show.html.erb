@@ -22,8 +22,8 @@
             </div></td>
               <td><%= link_to item.title, item_path(item) %></td>
               <td><%= @cart.contents[item.id.to_s] %></td>
-              <td><%= item.price %></td>
-              <td><%= @cart.subtotal(item) %></td>
+              <td>$<%= item.price %></td>
+              <td>$<%= @cart.subtotal(item) %></td>
               <td><%= button_to "Remove", cart_path(item_id: item.id), method: :delete %></td>
               <div class="quantity">
               <td><%= form_tag cart_path(item_id: item.id), method: :patch do %>
