@@ -20,7 +20,6 @@ RSpec.feature "as an admin" do
     order_item2 = order.order_items.create(item_id: item2.id, quantity: 1, status: "Paid", fulfillment_date: Time.now, order_date: Time.now)
 
     visit order_path(order)
-    # save_and_open_page
     expect(page).to have_content(order.created_at.strftime("%D at %l:%M%P"))
     expect(page).to have_content(admin.first_name)
     expect(page).to have_content(admin.last_name)
@@ -37,7 +36,7 @@ RSpec.feature "as an admin" do
     expect(page).to have_content("Subtotal: #{order.subtotal(1)}")
 
     expect(page).to have_content("Total: #{order.subtotal(0) + order.subtotal(1)}")
-    expect(page).to have_content("Status: #{order.order_status}")
+    expect(page).to have_content("Status: Ordered")
 
   end
 end
