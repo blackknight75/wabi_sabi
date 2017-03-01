@@ -5,35 +5,35 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
   <main>
   <nav>
-  <div class="nav-wrapper">
-    <a href="<%= root_path %>" class="brand-logo">わびさび Wabi-Sabi</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><%= link_to "Admin Dashboard", admin_dashboard_path if admin? %></li>
-      <li><%= link_to "My Orders", orders_path if current_user %></li>
-      <li><%= link_to "#{current_user.first_name.capitalize}'s Account",
-              user_path(current_user) if current_user %></li>
-      <li><%= link_to "Cart: #{@cart.total_count}",
-              cart_path(session[:cart]) %></li>
-      <li><%= link_to "Login", login_path unless current_user %></li>
-      <li><%= link_to "Log Out", logout_path, method: :post if current_user %></li>
-    </ul>
-  </div>
-</nav>
+    <div class="nav-wrapper">
+      <a href="<%= root_path %>" class="brand-logo">わびさび Wabi-Sabi</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "Admin Dashboard", admin_dashboard_path if admin? %></li>
+        <li><%= link_to "My Orders", orders_path if current_user %></li>
+        <li><%= link_to "#{current_user.first_name.capitalize}'s Account",
+                user_path(current_user) if current_user %></li>
+        <li><%= link_to "Cart: #{@cart.total_count}",
+                cart_path(session[:cart]) %></li>
+        <li><%= link_to "Login", login_path unless current_user %></li>
+        <li><%= link_to "Log Out", logout_path, method: :post if current_user %></li>
+      </ul>
+    </div>
+  </nav>
 
-  <% flash.each do |type, msg| %>
-    <%= content_tag :div, sanitize(msg), class: type %>
-  <% end %>
-
-  <div class="navbar">
-
-  </div>
   <div class="container">
+
+    <% flash.each do |type, msg| %>
+    <%= content_tag :div, sanitize(msg), class: type %>
+    <% end %>
+
 <%= yield %>
+
 </div>
 </main>
 <footer class="page-footer">
@@ -58,6 +58,16 @@
     © 2017 Copyright Text
     </div>
   </div>
-</footer>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+       $('.slider').slider();
+       $('select').material_select();
+     });
+  </script>
 </body>
 </html>
