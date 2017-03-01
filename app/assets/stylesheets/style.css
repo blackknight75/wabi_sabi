@@ -9,24 +9,35 @@ body {
   }
 
   nav {
-    background-color: #53e256;
+    background-color: #19353a;
 }
 footer.page-footer {
-    background-color: #53e256;
+    background-color: #19353a;
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: #f0fff0;
 }
 
 nav .brand-logo {
-    color: #fff;
+    color: #53e256;
 }
 .green.lighten-1 {
-    background-color: #CCCC99 !important;
+    background-color: #a9a9a9 !important;
 }
 
 .btn, .btn-large {
     color: #fff;
-    background-color: #CCCC99;
+    background-color: #a9a9a9;
+}
+
+.white-text {
+    color: #53e256 !important;
+}
+nav ul li:hover {
+   background-color: #53e256;
+}
+
+.button:hover {
+  box-shadow: 1px 6px 15px rgba(0,0,0,0.5);
 }

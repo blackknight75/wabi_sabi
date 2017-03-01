@@ -1,9 +1,25 @@
 <h2>My Orders</h2>
 
 <div class="my-orders">
-  <% @orders.each do |order| %>
-  <%= link_to "Order#: #{order.id}", order_path(order) %> Order Date: <%= order.created_at.strftime("%D at %l:%M%P %Z") %>
-  <br>
-  <br>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th data-field="id">ID</th>
+        <th data-field="order_status">Status</th>
+        <th data-field="order_date">Order Date</th>
+        <th data-field="order_total">Order Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to "Order#: #{order.id}", order_path(order) %></td>
+        <td><%= order.order_status %></td>
+        <td><%= order.created_at.strftime("%D at %l:%M%P") %></td>
+        <td>$<%= order.order_total %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

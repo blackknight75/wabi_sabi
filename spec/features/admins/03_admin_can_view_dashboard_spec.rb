@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "accesses the dashboard" do
-  xscenario "admin can access the admin dashboard" do
+  scenario "admin can access the admin dashboard" do
 
     User.create(first_name: "Billy",
              last_name: "Goat",
@@ -23,8 +23,8 @@ RSpec.feature "accesses the dashboard" do
     within 'h2' do
       expect(page).to have_content 'Admin Dashboard'
     end
-    within '.new-item' do
-      expect(page).to have_content 'Create New Item'
+    within '.item-management' do
+      expect(page).to have_content 'Add New Item to Inventory'
     end
     within '.manage-users' do
       expect(page).to have_content 'Manage Users'

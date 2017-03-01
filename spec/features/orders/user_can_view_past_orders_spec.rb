@@ -11,18 +11,17 @@ RSpec.feature "as a user" do
   expect(page).to have_link(Order.last.id)
   # save_and_open_page
   click_on "#{Order.last.id}"
-  expect(page).to have_content("Subtotal: 200")
-  expect(page).to have_content("Quantity: 2")
-  expect(page).to have_content("Price: 100")
-  expect(page).to have_content("Name: Matcha")
-  expect(page).to have_content("Order Status: Ordered")
-  expect(page).to have_content("Order Date:")
+  expect(page).to have_content("200")
+  expect(page).to have_content("2")
+  expect(page).to have_content("100")
+  expect(page).to have_content("Matcha")
+  expect(page).to have_content("Ordered")
   expect(page).to have_content("Order Total: 300")
   end
 end
 
 def user_setup
-  user = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
+  user = User.create(first_name: "George", username: "sally", email: "sally@email.com", password: "pass", role: 1)
   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 end
 
