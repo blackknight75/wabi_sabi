@@ -2,11 +2,15 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @categories = Category.all
   end
 
   def create
     item = Item.new(item_params)
     if item.save
+      params[:item][:category_ids].each do |category_id|
+        item.item_categories.create(category_id: category_id)
+      end
       redirect_to admin_items_path
     else
       render :new
@@ -20,6 +24,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :image)
+    params.require(:item).permit(:title, :description, :price, :image, :category_ids)
   end
 end
