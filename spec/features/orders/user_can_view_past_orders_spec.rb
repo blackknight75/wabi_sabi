@@ -9,7 +9,7 @@ RSpec.feature "as a user" do
 
   expect(page).to have_content("My Orders")
   expect(page).to have_link(Order.last.id)
-  # save_and_open_page
+
   click_on "#{Order.last.id}"
   expect(page).to have_content("200")
   expect(page).to have_content("2")
