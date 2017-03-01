@@ -24,7 +24,6 @@ RSpec.feature "logout" do
         click_on "Log Out"
       end
 
-      # expect(page).to have_content("You have successfully logged out.")
       expect(current_path).to eq(root_path)
 
       within('.nav-wrapper') do
