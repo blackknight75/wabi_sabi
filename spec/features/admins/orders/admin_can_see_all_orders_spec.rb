@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature 'admin visual' do
-  xdescribe 'when an admin visits the dashboard' do
+  describe 'when an admin visits the dashboard' do
     it 'they can see a listing of all orders' do
       admin = User.create(first_name: "Brandon",
                         username: "B1",
@@ -15,9 +15,7 @@ RSpec.feature 'admin visual' do
       visit admin_dashboard_path
       expect(page).to have_content("Manage Orders")
 
-      within(".my-orders") do
         click_on "Order#: #{Order.last.id}"
-      end
 
       expect(current_path).to eq(order_path(Order.last))
     end

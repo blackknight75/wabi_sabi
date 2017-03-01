@@ -24,7 +24,7 @@ RSpec.feature "accesses the dashboard" do
       expect(page).to have_content 'Admin Dashboard'
     end
     within '.new-item' do
-      expect(page).to have_content 'Create New Item'
+      expect(page).to have_content 'Add New Item to Inventory'
     end
     within '.manage-users' do
       expect(page).to have_content 'Manage Users'

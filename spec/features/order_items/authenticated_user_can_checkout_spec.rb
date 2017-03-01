@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ' when a user visits their cart' do
   scenario ' they click on checkout and order is placed' do
-    user = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
+    user = User.create(first_name: "Jonny 5", username: "sally", email: "sally@email.com", password: "pass", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     item = Item.create(title: "Matcha",
