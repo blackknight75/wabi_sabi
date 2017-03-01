@@ -4,8 +4,10 @@ RSpec.feature "logout" do
   xdescribe "successful logout" do
     scenario "user clicks 'logout' on userpage" do
       user = User.create(name: "Spencer",
-                        username: "S1",
-                        password: "password")
+                         username: "S1",
+                         password: "password",
+                         role: 1
+                        )
 
       visit login_path
       fill_in "session[username]", with: user.username

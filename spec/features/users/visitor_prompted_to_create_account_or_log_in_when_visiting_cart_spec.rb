@@ -53,7 +53,7 @@ describe "when a visitor visits cart with items" do
 end
 
 def user_setup
-  user = User.create(username: "sally", email: "sally@email.com", password: "pass")
+  user = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 end
 
@@ -66,6 +66,7 @@ def cart_setup
                      price: 100)
 
   visit root_path
+  
   within all('.card-action')[0] do
     click_link "Add to Cart"
 end
