@@ -15,9 +15,9 @@ RSpec.feature "as an admin" do
     click_on "Edit"
 
     fill_in "item[title]", with: "Bubbles"
-    fill_in "item[status]", with: "Paid"
+    fill_in "item[status]", with: "Retired"
     fill_in "item[image]", with: "http://dreamatico.com/data_images/bubble/bubble-7.jpg"
     fill_in "item[description]", with: "semi-permeable membrane"
-    expect(current_path).to eq.("/admin/items/#{item1.id}/edit")
+    expect(current_path).to eq(edit_admin_item_path(item1.id))
   end
 end

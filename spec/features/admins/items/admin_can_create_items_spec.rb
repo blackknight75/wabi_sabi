@@ -15,7 +15,7 @@ describe 'When an admin visits item new page' do
     fill_in 'item[price]', with: 5
     fill_in 'item[image]', with: "http://i.imgur.com/RbzANbF.jpg"
 
-    click_on 'Add Item to Inventory'
+    click_on 'Create Item'
 
     expect(current_path).to eq admin_items_path
     expect(page).to have_content("Chopsticks")

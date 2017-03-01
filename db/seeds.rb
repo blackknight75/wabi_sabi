@@ -92,3 +92,19 @@ item10.item_categories.create(category: category5)
 item10.item_categories.create(category: category6)
 item10.item_categories.create(category: category9)
 #-----------------------------------------------------------------------------#
+User.create(username: "blackknight75",
+            first_name: "Daniel",
+            last_name: "Olson",
+            email: "devbox4714@gmailcom",
+            address: "1234 1st St, Denver, CO 80202",
+            password: "password",
+            role: 0
+           )
+User.create(username: "x",
+            first_name: "Sally",
+            last_name: "Beans",
+            email: "beansandsally@gmailcom",
+            address: "4321 1st St, Denver, CO 80202",
+            password: "x",
+            role: 1
+           )
