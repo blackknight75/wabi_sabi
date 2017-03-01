@@ -1,0 +1,24 @@
+<h1>Items</h1><br>
+<%= button_to "Categories", categories_path, method: :get %>
+<div class="items">
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+  <% @items.each do |item| %>
+      <tr>
+        <td><img src= "<%= item.image %>"  ></td>
+        <td><%= item.title %></td>
+        <td>Price: <%= item.price %></td>
+        <td>Description: <%= item.description %></td>
+        <td>Status: <%= item.status %></td>
+        <td>Actions: <%= link_to "Edit", edit_admin_item_path(item) %></td>
+      </tr>
+    <% end %>
+    </table>
+</div>

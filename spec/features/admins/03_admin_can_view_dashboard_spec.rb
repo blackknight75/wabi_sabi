@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "accesses the dashboard" do
-  scenario "admin can access the admin dashboard" do
+  xscenario "admin can access the admin dashboard" do
 
     User.create(first_name: "Billy",
              last_name: "Goat",
