@@ -2,9 +2,8 @@
 
 <h4>Order Date: <%= @order.created_at.strftime("%D at %l:%M%P") %></h4>
 <h4>Order Status: <%= @order.order_items[0].status  %></h4>
-<%= @order.user.full_name %>
-<%= @order.user.address %>
-
+<%= @order.user.full_name %><br>
+<%= @order.user.address %><br>
 <% @order.items.each_with_index do |item, index| %>
   Name: <%= link_to item.title, item_path(item) %>
   Price: <%= @order.item_prices[index] %>
@@ -13,4 +12,5 @@
   <br>
   <br>
 <% end %>
+<%= @order.order_status %><br>
 <h4>Order Total: <%= @order.order_total %></h4>
