@@ -1,7 +1,9 @@
 <h1>Order Show Page</h1>
 
 <h4>Order Date: <%= @order.created_at.strftime("%D at %l:%M%P") %></h4>
-<h4>Order Status: <%= @order.order_items[0].status  %></h4>
+<h4>Order Status: <%= @order.order_status  %></h4>
+<%= @order.user.full_name %><br>
+<%= @order.user.address %><br>
 <div>
   <table>
     <thead>
@@ -14,9 +16,9 @@
     </thead>
 
     <tbody>
-      <% @order.item_names.each_with_index do |item_name, index| %>
+      <% @order.items.each_with_index do |item, index| %>
       <tr>
-        <td><%= item_name %></td>
+        <td><%= link_to item.title, item_path(item) %></td>
         <td><%= @order.item_prices[index] %>7</td>
         <td><%= @order.item_quantities[index] %></td>
         <td><%= @order.subtotal(index) %></td>

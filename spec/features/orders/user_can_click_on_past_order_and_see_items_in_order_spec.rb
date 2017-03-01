@@ -1,41 +1,44 @@
 require 'rails_helper'
 
 describe 'when an authenticated user visits orders page' do
-  xscenario 'they can click on a past order and see all items in order' do
+  scenario 'they can click on a past order and see all items in order' do
 
     user = User.create(first_name: "George", username: "sally", email: "sally@email.com", password: "pass", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    Item.create(matcha)
-    Item.create(chopsticks)
+    cart_setup
+    visit cart_path
+    click_on "checkout"
 
+    within('.nav-wrapper') do
+      click_on 'My Orders'
+    end
+    click_on "Order#: #{Order.last.id}"
 
-    order = user.orders.create(order_date: "01/01/2017")
-    order.orderitems.create(item1)
-    order.orderitems.create(item1)
-    order.orderitems.create(item1)
-
-    visit user_orders_path(user)
-    click_on ("01/01/2017")
-
+    save_and_open_page
     expect(page).to have_content("Matcha")
-    expect(page).to have_content("Green Tea")
-    expect(page).to have_content("Chopsticks")
-    expect(page).to have_content("Lovely wooden chopsticks.")
+    expect(page).to have_content("Stuff")
   end
 end
 
-def matcha
-  {
-    title: "Macha",
-    description: "Green Tea",
-    price: 100
-  }
-end
+def cart_setup
+  item = Item.create(title: "Matcha",
+                     description: "Green Tea",
+                     price: 100)
+  Item.create(title: "Stuff",
+                     description: "Green Stuff",
+                     price: 100)
 
-def chopsticks
-  {
-    title: "Chopsticks",
-    description: "Lovely wooden chopsticks.",
-    price: 5
-  }
+  visit root_path
+
+  within all('.card-action')[0] do
+    click_link "Add to Cart"
+  end
+
+  within all('.card-action')[1] do
+    click_link "Add to Cart"
+  end
+
+  within all('.card-action')[0] do
+    click_link "Add to Cart"
+  end
 end
