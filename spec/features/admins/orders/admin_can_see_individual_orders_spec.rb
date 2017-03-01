@@ -26,17 +26,15 @@ RSpec.feature "as an admin" do
     expect(page).to have_content(admin.address)
 
     expect(page).to have_link(item1.title, href: item_path(item1))
-    expect(page).to have_content("Quantity: #{item1.order_items.first.quantity}")
-    expect(page).to have_content("Price: #{item1.price}")
-    expect(page).to have_content("Subtotal: #{order.subtotal(0)}")
+    expect(page).to have_content("#{item1.order_items.first.quantity}")
+    expect(page).to have_content("#{item1.price}")
+    expect(page).to have_content("#{order.subtotal(0)}")
 
     expect(page).to have_link(item2.title, href: item_path(item2))
-    expect(page).to have_content("Quantity: #{item2.order_items.first.quantity}")
-    expect(page).to have_content("Price: #{item2.price}")
-    expect(page).to have_content("Subtotal: #{order.subtotal(1)}")
+    expect(page).to have_content("#{item2.order_items.first.quantity}")
+    expect(page).to have_content("#{item2.price}")
+    expect(page).to have_content("#{order.subtotal(1)}")
 
-    expect(page).to have_content("Total: #{order.subtotal(0) + order.subtotal(1)}")
-    expect(page).to have_content("Status: Ordered")
-
+    expect(page).to have_content("#{order.subtotal(0) + order.subtotal(1)}")
   end
 end
