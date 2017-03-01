@@ -14,7 +14,6 @@ describe 'when an authenticated user visits orders page' do
     end
     click_on "Order#: #{Order.last.id}"
 
-    save_and_open_page
     expect(page).to have_content("Matcha")
     expect(page).to have_content("Stuff")
   end
