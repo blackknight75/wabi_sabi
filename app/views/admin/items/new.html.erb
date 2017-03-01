@@ -1,0 +1,31 @@
+<h1>New Item Creator</h1>
+
+<%= form_for @item, url:{:controller=>'admin/items', :action=>'create'} do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+  <%= f.collection_check_boxes :category_ids, @categories, :id, :name do |m| %>
+  <%= m.check_box %> <%= m.label %>
+<% end %>
+  <br>
+  <br>
+  <%= f.submit "Add Item to Inventory" %>
+<% end %>
+<br>
+<br>
+
+
+
+<div class="input-field col s12">
+  <select multiple>
+    <option value="" disabled selected>Choose Categories</option>
+    <% @categories.each do |category| %>
+    <option value="#{category.id}"><%= category.name %></option>
+    <% end %>
+  </select>
+</div>
