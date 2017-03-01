@@ -14,10 +14,10 @@
       <tr>
         <td><img src= "<%= item.image %>"  ></td>
         <td><%= item.title %></td>
-        <td>Price: <%= item.price %></td>
-        <td>Description: <%= item.description %></td>
-        <td>Status: <%= item.status %></td>
-        <td>Actions: <%= link_to "Edit", edit_admin_item_path(item) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.description %></td>
+        <td><%= item.status %></td>
+        <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
       </tr>
     <% end %>
     </table>
