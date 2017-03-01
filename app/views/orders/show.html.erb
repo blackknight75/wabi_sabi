@@ -2,12 +2,27 @@
 
 <h4>Order Date: <%= @order.created_at.strftime("%D at %l:%M%P") %></h4>
 <h4>Order Status: <%= @order.order_items[0].status  %></h4>
-<% @order.item_names.each_with_index do |item_name, index| %>
-  Name: <%= item_name %>
-  Price: <%= @order.item_prices[index] %>
-  Quantity: <%= @order.item_quantities[index] %>
-  Subtotal: <%= @order.subtotal(index) %>
-  <br>
-  <br>
-<% end %>
-<h4>Order Total: <%= @order.order_total %></h4>
+<div>
+  <table>
+    <thead>
+      <tr>
+          <th data-field="name">Item Name</th>
+          <th data-field="price">Item Price</th>
+          <th data-field="quantity">Quantity</th>
+          <th data-field="quantity">Subtotal</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @order.item_names.each_with_index do |item_name, index| %>
+      <tr>
+        <td><%= item_name %></td>
+        <td><%= @order.item_prices[index] %>7</td>
+        <td><%= @order.item_quantities[index] %></td>
+        <td><%= @order.subtotal(index) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h4 class="right">Order Total: <%= @order.order_total %></h4>
+</div>

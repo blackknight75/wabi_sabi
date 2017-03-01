@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "logout" do
   xdescribe "successful logout" do
     scenario "user clicks 'logout' on userpage" do
-      user = User.create(name: "Spencer",
+      user = User.create(first_name: "George",
                          username: "S1",
                          password: "password",
                          role: 1

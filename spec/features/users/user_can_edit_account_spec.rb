@@ -27,8 +27,8 @@ describe "when a user visits user dashboard" do
   end
 
   scenario 'user tries to visit other users edit page and is brought to their own' do
-    user = User.create(username: "sally", email: "sally@email.com", password: "pass", role: 1)
-    user2 = User.create(username: "charlie", email: "charlie@email.com", password: "pass", role: 1)
+    user = User.create(first_name: "George", username: "sally", email: "sally@email.com", password: "pass", role: 1)
+    user2 = User.create(first_name: "George", username: "charlie", email: "charlie@email.com", password: "pass", role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit user_path(user2)
