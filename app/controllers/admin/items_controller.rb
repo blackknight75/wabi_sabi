@@ -1,8 +1,26 @@
 class Admin::ItemsController < ApplicationController
 
+  def index
+    @items.Item.all
+  end
+
   def new
     @item = Item.new
     @categories = Category.all
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    @categories = Category.all
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update_attributes(item_params)
+      redirect_to admin_dashboard_path
+    else
+      render :edit
+    end
   end
 
   def create
