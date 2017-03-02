@@ -4,6 +4,7 @@ RSpec.feature 'admin visual' do
   describe 'when an admin visits the dashboard' do
     it 'they can see a listing of all orders' do
       admin = User.create(first_name: "Brandon",
+                        last_name: "Randall",
                         username: "B1",
                         password: "password",
                         role: 0)
@@ -22,6 +23,7 @@ RSpec.feature 'admin visual' do
   end
   scenario 'admin can see orders by status with counts for each status' do
     admin = User.create(first_name: "Brandon",
+                      last_name: "Randall",
                       username: "B1",
                       password: "password",
                       role: 0)
