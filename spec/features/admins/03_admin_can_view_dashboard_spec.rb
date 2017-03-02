@@ -26,12 +26,6 @@ RSpec.feature "accesses the dashboard" do
     within '.item-management' do
       expect(page).to have_content 'Add New Item to Inventory'
     end
-    within '.manage-users' do
-      expect(page).to have_content 'Manage Users'
-    end
-    within '.manage-items' do
-      expect(page).to have_content 'Manage Items'
-    end
     within '.manage-orders' do
       expect(page).to have_content 'Manage Orders'
     end
