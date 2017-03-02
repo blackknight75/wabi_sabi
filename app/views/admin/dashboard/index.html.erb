@@ -7,35 +7,13 @@
 </div>
 
 <div class='manage-orders'>
-<h3>Manage Orders</h3>
+  <h3>Manage Orders</h3>
 
-
-<a class='dropdown-button waves-effect waves-light light-blue darken-4 btn' href='#' data-activates='dropdown1'><i class="material-icons left">toc</i>Sort by Status</a>
-
-<ul id='dropdown1' class='dropdown-content'>
-  <li><%= link_to "Ordered", admin_dashboard_path(order_status: "Ordered"), method: :post %></li>
-  <li><%= link_to "Paid", admin_dashboard_path(order_status: "Paid"), method: :post %></li>
-  <li><%= link_to "Completed", admin_dashboard_path(order_status: "Completed"), method: :post %></li>
-  <li><%= link_to "Cancelled", admin_dashboard_path(order_status: "Cancelled"), method: :post %></li>
-</ul>
-<br>
-<br>
+  <p><%= link_to "Ordered", admin_dashboard_path(order_status: "Ordered"), method: :post %> | <%= link_to "Paid", admin_dashboard_path(order_status: "Paid"), method: :post %> | <%= link_to "Completed", admin_dashboard_path(order_status: "Completed"), method: :post %> | <%= link_to "Cancelled", admin_dashboard_path(order_status: "Cancelled"), method: :post %></p>
 
   <% @orders.each do |order| %>
     Order Count: <%= @orders.count %>
     <%= link_to "Order#: #{order.id}", order_path(order) %> Order Date: <%= order.created_at.strftime("%D at %l:%M%P %Z") %>
     <br><br>
   <% end %>
-</div>
-
-</div>
-
-<div class='manage-items'>
-<h3>Manage Items</h3>
-
-</div>
-
-<div class='manage-users'>
-<h3>Manage Users</h3>
-
 </div>
