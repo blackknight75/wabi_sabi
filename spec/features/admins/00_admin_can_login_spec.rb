@@ -3,14 +3,18 @@ require 'rails_helper'
 RSpec.feature "Admin: " do
   context "not logged in" do
     it "can log in" do
-      user = User.create(first_name: "Brandon",
-                          username: "Brandon1985",
-                          password: "password",
-                          role: 1)
+      user = User.create(first_name: "Billy",
+               last_name: "Goat",
+               username: "billygoat",
+               password: "pass",
+               address: "123 Any St, Denver, CO 80202",
+               email: "billygoat@gmail.com",
+               role: 1
+              )
       visit login_path
 
-      fill_in "session[username]", with: "Brandon1985"
-      fill_in "session[password]", with: "password"
+      fill_in "session[username]", with: "billygoat"
+      fill_in "session[password]", with: "pass"
 
       within('.login-form') do
         click_on "Login"

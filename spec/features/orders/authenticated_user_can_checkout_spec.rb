@@ -2,7 +2,12 @@ require 'rails_helper'
 
 describe 'when a visitor adds items to cart' do
   scenario ' they visit cart and click on login' do
-    user = User.create(first_name: "Nil", username: "sally", email: "sally@email.com", password: "pass", role: 1)
+    user = User.create(first_name: "Nil",
+                      last_name: "Randall",
+                      username: "sally",
+                      email: "sally@email.com",
+                      password: "pass",
+                      role: 1)
 
     visit root_path
 

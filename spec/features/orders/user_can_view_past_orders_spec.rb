@@ -21,7 +21,7 @@ RSpec.feature "as a user" do
 end
 
 def user_setup
-  user = User.create(first_name: "George", username: "sally", email: "sally@email.com", password: "pass", role: 1)
+  user = User.create(first_name: "George", last_name: "Curious", username: "sally", email: "sally@email.com", password: "pass", role: 1)
   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 end
 

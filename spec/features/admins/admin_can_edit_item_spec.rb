@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "as an admin" do
   scenario "I can edit exisiting items" do
     admin = User.create(first_name: "Brandon",
+                      last_name: "Randall",
                       username: "B1",
                       password: "password",
                       role: 0)

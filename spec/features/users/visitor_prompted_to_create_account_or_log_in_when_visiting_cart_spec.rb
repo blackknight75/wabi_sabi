@@ -28,6 +28,7 @@ describe "when a visitor visits cart with items" do
 
     expect(current_path).to eq signup_path
     fill_in "user[username]", with: "Sally"
+    fill_in "user[first_name]", with: "Sally"
     fill_in "user[email]", with: "Sally@email.com"
     fill_in "user[address]", with: "123 2nd St"
     fill_in "user[password]", with: "pass"
@@ -38,7 +39,9 @@ describe "when a visitor visits cart with items" do
     expect(page).to_not have_content("Login or Create Account to Checkout")
     expect(page).to have_content("Matcha")
     expect(page).to have_content("100")
-    expect(page).to have_button("checkout")
+    within('.checkout') do
+      expect(page).to have_button("checkout")
+  end
   end
 
   scenario 'when user is logged in they can click and checkout' do

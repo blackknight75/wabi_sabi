@@ -3,7 +3,11 @@ require 'rails_helper'
 describe 'when an authenticated user visits orders page' do
   scenario 'they can click on a past order and see all items in order' do
 
-    user = User.create(first_name: "George", username: "sally", email: "sally@email.com", password: "pass", role: 1)
+    user = User.create(first_name: "Brandon",
+                      last_name: "Randall",
+                      username: "B1",
+                      password: "password",
+                      role: 0)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     cart_setup
     visit cart_path
