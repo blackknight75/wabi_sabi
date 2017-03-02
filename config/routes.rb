@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   resources :items, only: [:new, :show, :index]
   resources :users, except: [:delete]
-  resources :orders, only: [:new, :create, :show, :index]
+  resources :orders
   resources :categories, only: [:index]
 
   get ":slug" => "categories#show", :as => "category"
