@@ -4,6 +4,7 @@ RSpec.feature "logout" do
   describe "successful admin logout" do
     scenario "admin clicks 'logout' on userpage" do
       admin = User.create(first_name: "Brandon",
+                        last_name: "Rand",
                         username: "B1",
                         password: "password",
                         role: 0)

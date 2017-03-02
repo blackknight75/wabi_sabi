@@ -3,6 +3,7 @@ require "rails_helper"
 describe 'When an admin visits item new page' do
   scenario 'they can create a new item' do
     admin = User.create(first_name: "Brandon",
+                      last_name: "Randall",
                       username: "B1",
                       password: "password",
                       role: 0)
