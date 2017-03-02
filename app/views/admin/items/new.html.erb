@@ -7,8 +7,6 @@
   <%= f.text_field :description %>
   <%= f.label :price %>
   <%= f.text_field :price %>
-  <%= f.label :image %>
-  <%= f.text_field :image %>
   <%= f.label :status %>
   <%= f.text_field :status %>
   <%= f.collection_check_boxes :category_ids, @categories, :id, :name do |m| %>
