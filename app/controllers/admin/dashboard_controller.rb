@@ -1,6 +1,4 @@
-class Admin::DashboardController < ApplicationController
-  before_action :admin_gate
-
+class Admin::DashboardController < Admin::BaseController
   def index
     if params[:order_status]
       @orders = Order.where(order_status: params[:order_status])

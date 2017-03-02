@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def new
     @item_names = @cart.cart_items
     @item_prices = @cart.cart_item_prices
@@ -23,7 +22,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if Order.find(params[:id]).user_id == current_user.id
+      @order = Order.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def create
