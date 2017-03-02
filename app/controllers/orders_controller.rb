@@ -5,9 +5,21 @@ class OrdersController < ApplicationController
     @item_prices = @cart.cart_item_prices
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    order = Order.find(params[:id])
+    if order.update_attributes(order_status: params[:order][:order_status])
+      redirect_to order_path(order)
+    else
+      render :edit
+    end
+  end
+
   def index
     @orders = Order.where(user_id: current_user)
-
   end
 
   def show

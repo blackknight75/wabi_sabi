@@ -1,0 +1,9 @@
+<h1>Edit Order</h1>
+
+<%= link_to "Order#: #{@order.id}", order_path(@order) %> Order Date: <%= @order.created_at.strftime("%D at %l:%M%P %Z") %>
+<br><br><br>
+<%= form_for @order do |f| %>
+  <%= f.label :order_status %>
+  <%= f.text_field :order_status %>
+  <%= f.submit %>
+<% end %>
