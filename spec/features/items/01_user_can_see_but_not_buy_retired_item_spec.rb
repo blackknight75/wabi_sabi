@@ -14,13 +14,7 @@ RSpec.feature "As a user if I visit an item page" do
       expect(page).to have_content(100)
       within('.stock')do
         expect(page).to_not have_content("Add to Cart")
-        expect(page).to have_button('Item Retired', disabled: true)
       end
     end
   end
 end
-
-# As a user if I visit an item page and that item has been retired
-# Then I should still be able to access the item page
-# And I should not be able to add the item to their cart
-# And I should see in place of the "Add to Cart" button or link - "Item Retired"
