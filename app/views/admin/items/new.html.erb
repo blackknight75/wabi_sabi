@@ -1,6 +1,6 @@
 <h1>New Item Creator</h1>
 
-<%= form_for @item, url:{:controller=>'admin/items', :action=>'create'} do |f| %>
+<%= form_for @item do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
@@ -19,14 +19,3 @@
   <%= f.submit %>
 <% end %>
 <br>
-
-
-
-<div class="input-field col s12">
-  <select multiple>
-    <option value="" disabled selected>Choose Categories</option>
-    <% @categories.each do |category| %>
-    <option value="#{category.id}"><%= category.name %></option>
-    <% end %>
-  </select>
-</div>
