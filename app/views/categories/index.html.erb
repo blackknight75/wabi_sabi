@@ -1,6 +1,6 @@
 <h2>Categories</h2>
 
 <% @categories.each do |category| %>
-<%= link_to category.name, category_path(category.slug), method: :get %>
+<%= link_to category.name, category_path(category.slug), class: "waves-effect waves-light light-blue darken-4 btn left", method: :get %>
   <br><br>
 <% end %>

@@ -1,5 +1,6 @@
 <h1>Items</h1><br>
-<%= button_to "Categories", categories_path, method: :get %>
+<%= button_to "Categories", categories_path, class: "waves-effect waves-light light-blue darken-4 btn left", method: :get %>
+<br><br>
 <div class="items">
   <div class="row">
   <% @items.each do |item| %>
@@ -9,7 +10,7 @@
         <%= image_tag item.image, height: '250', width: '250' %>
         </div>
         <div class="card-content">
-          <h5><%= item.title %></h5>
+          <h5><%= link_to item.title, item_path(item) %></h5>
           <p>Price: <%= item.price %></p>
           <br>
           <p>Description: <%= item.description %></p>
